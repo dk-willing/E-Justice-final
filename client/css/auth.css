@@ -1,58 +1,71 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
   /* font-family: 'Arial', sans-serif; */
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+  padding: 2rem;
+  min-height: 100vh;
   color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90%;
-  padding: 0 5%;
   max-width: 800px;
-  margin: 0 auto;
   height: 100vh;
 }
 .auth-box {
   border-radius: 15px;
-  padding: 50px;
+  padding: 5rem;
   width: 100%;
   display: flex;
   margin-top: 100px;
 
   transition: all 0.4s;
 }
+
+.auth-form .field {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
 .left-section {
   background-color: #2b3e5c;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 15px 0 0 15px;
   width: 70%;
 }
 .left-section p {
   margin-bottom: 20px;
-  font-size: 12px;
+  font-size: 1.2rem;
   text-align: center;
 }
 .right-section {
   background-color: #122038;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 0 15px 15px 0;
   width: 70%;
 }
 .welcome-text {
   margin-bottom: 30px;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 .brand-title {
-  font-size: 28px;
+  font-size: 2.8rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -61,43 +74,48 @@ body {
 }
 .left-section h4 {
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 1.5rem;
 }
 .description h4 {
-  font-size: 14px;
+  font-size: 1.4rem;
   margin-bottom: 10px;
   text-align: center;
 }
 .description p {
   margin-bottom: 10px;
   line-height: 1.5;
-  font-size: 12px;
+  font-size: 1.2rem;
   text-align: center;
 }
 .extra-options {
   display: flex;
-  font-size: 11px;
+  font-size: 1.2rem;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 1rem;
+  margin: 30px 0;
 }
+
 .extra-options label {
   display: flex;
   align-items: center;
-  gap: 5px;
+
+  gap: 0.5rem;
 }
 .extra-options h4 {
   margin: 0;
 }
 .terms p {
-  margin-bottom: 10px;
-  font-size: 11px;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
   text-align: center;
 }
 .terms label {
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 10px;
 }
 .terms p span {
   color: blue;
@@ -121,9 +139,9 @@ body {
   justify-content: space-between;
   background: #35496e;
   border-radius: 20px;
-  padding: 10px;
+  padding: 1rem;
   position: relative;
-  width: 300px;
+  width: 30rem;
 }
 .slider-ball {
   position: absolute;
@@ -139,7 +157,7 @@ body {
 .tab {
   background: transparent;
   color: #fff;
-  padding: 5px;
+  padding: 0.5rem;
   border-radius: 20px;
   cursor: pointer;
   margin: 0 5px;
@@ -160,14 +178,14 @@ body {
   align-items: center;
   margin-bottom: 15px;
   background-color: #3c506e;
-  padding: 2px 10px;
+  padding: 0.2rem 1rem;
   border-radius: 10px;
 }
 .input-container input {
   background: transparent;
   border: none;
   outline: none;
-  padding: 10px;
+  padding: 1rem;
   color: #fff;
   margin-left: 8px;
   flex: 1;
@@ -176,23 +194,23 @@ body {
   background-color: #3f8efc;
   color: #fff;
   border: none;
-  padding: 5px;
-  width: 50%;
+  padding: 1.5rem;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
-  margin-left: 5rem;
-  font-size: 13px;
+  margin: 10px auto;
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
 }
 .or-continue {
   margin: 20px 0;
   text-align: center;
-  font-size: 10px;
+  font-size: 1.2rem;
   display: flex;
 }
 .or-continue::before,
 .or-continue::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 0.5px;
   margin: 0 5px;
@@ -200,13 +218,13 @@ body {
 }
 .social-buttons a {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   margin: 5px;
   border-radius: 5px;
   background-color: #50698c;
   color: #fff;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 1.6rem;
 }
 .social-buttons {
   margin-left: 3rem;
@@ -214,7 +232,7 @@ body {
 .features {
   background-color: #1a2c49;
   border: 1px solid goldenrod;
-  padding: 15px;
+  padding: 1.5rem;
   border-radius: 15px;
   margin-top: 20px;
 }
@@ -224,7 +242,11 @@ body {
   align-items: center;
 }
 
-.features span {
+.features .desc {
+  text-align: left;
+}
+
+.features .material-symbols-outlined {
   margin-right: 8px;
   color: goldenrod;
 }
@@ -236,10 +258,10 @@ body {
 .toggle-theme .material-symbols-outlined {
   color: #fff;
   /* background-color: rgb(133, 172, 226); */
-  font-size: 20px;
+  font-size: 2rem;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -247,11 +269,11 @@ body {
 }
 .forget {
   margin-left: 7rem;
-  font-size: 13px;
+  font-size: 1.2rem;
   text-decoration: none;
 }
 .auth-form label {
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 /* Light Mode */
 body.light-mode {

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Justice Obama - Lawyer Dashboard</title>
+    <link rel="stylesheet" href="../css/lawyer-dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <div>
+          <img src="../images/e-justice logo.jpg" alt="E-Justice Ghana logo" />
+        </div>
+        <span>E-Justice <span class="highlight">Ghana</span></span>
+      </div>
+
+      <div class="dash lawyer">
+        <div class="lawyer abt">
+          <div class="profile-img">
+            <img src="../images/harvey.jpeg" alt="Harvey Spectre" />
+          </div>
+
+          <hi>Harvey Spectre</hi>
+          <p>Lawyer</p>
+        </div>
+      </div>
+      <div class="nav-menu">
+        <div class="nav-item active">
+          <i class="fas fa-gauge-high"></i>
+          Dashboard
+        </div>
+        <div class="nav-item">
+          <i class="fas fa-briefcase"></i>
+          Case Management
+        </div>
+        <div class="nav-item">
+          <i class="fas fa-calendar"></i>
+          Appointments
+        </div>
+        <div class="nav-item">
+          <i class="fas fa-users"></i>
+          Peer Collaboration
+        </div>
+        <div class="nav-item">
+          <i class="fas fa-user-gear"></i>
+          Profile Settings
+        </div>
+
+        <div class="nav-item-special">
+          <div class="nav-icon" id="darkModeToggler">
+            <i class="fas fa-moon" id="darkModeIcon"></i>
+          </div>
+          <div class="nav-icon">
+            <i class="fas fa-gear"></i>
+          </div>
+          <div class="nav-icon" id="logout-btn" title="Logout">
+            <i class="fa-regular fa-user"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="dashboard-header">
+        <div class="header-title">
+          <h1>Dashboard</h1>
+        </div>
+        <div class="user-profile">
+          <div class="profile-img">
+            <img src="../images/e-justice logo.jpg" alt="User profile" />
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-container">
+        <div class="welcome-section">
+          <div class="welcome-text">
+            <h2>Welcome back, Obed!</h2>
+            <p>
+              You have 3 active cases and 2 consultations scheduled for today.
+            </p>
+
+            <div class="action-buttons">
+              <button class="btn btn-outline">
+                <i class="fas fa-plus"></i>
+                Manage Case
+              </button>
+              <button class="btn btn-outline">
+                <i class="far fa-calendar"></i>
+                View Schedule
+              </button>
+              <button class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Start New Case
+              </button>
+              <div class="pro-bono-status">
+                <i class="fas fa-check-circle"></i>
+                Pro Bono Status Active
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card assigned-cases">
+            <div class="dashboard-card-header">
+              <h3>Assigned Cases</h3>
+              <a href="#" class="card-link">View all 5 cases</a>
+            </div>
+
+            <div class="case-item">
+              <div class="case-header">
+                <div class="case-title">Property Dispute Resolution</div>
+                <div class="case-date">Started on May 15</div>
+              </div>
+              <div class="case-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 65%"></div>
+                </div>
+                <div class="progress-text">65%</div>
+              </div>
+              <div class="case-meta">
+                <span class="case-type blue">Civil Progress</span>
+                <div class="case-actions">
+                  <div class="action-icon">
+                    <i class="fas fa-eye"></i>
+                  </div>
+                  <div class="action-icon">
+                    <i class="fas fa-edit"></i>
+                  </div>
+                  <button class="update-btn">Update</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-item">
+              <div class="case-header">
+                <div class="case-title">Employment Contract Review</div>
+                <div class="case-date">Started on May 10</div>
+              </div>
+              <div class="case-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <div class="progress-text">90%</div>
+              </div>
+              <div class="case-meta">
+                <span class="case-type green">Contract</span>
+                <div class="case-actions">
+                  <div class="action-icon">
+                    <i class="fas fa-eye"></i>
+                  </div>
+                  <div class="action-icon">
+                    <i class="fas fa-edit"></i>
+                  </div>
+                  <button class="update-btn">Update</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-item">
+              <div class="case-header">
+                <div class="case-title">Property Will Drafting</div>
+                <div class="case-date">Started on May 5</div>
+              </div>
+              <div class="case-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 45%"></div>
+                </div>
+                <div class="progress-text">45%</div>
+              </div>
+              <div class="case-meta">
+                <span class="case-type orange">Legal Document</span>
+                <div class="case-actions">
+                  <div class="action-icon">
+                    <i class="fas fa-eye"></i>
+                  </div>
+                  <div class="action-icon">
+                    <i class="fas fa-edit"></i>
+                  </div>
+                  <button class="update-btn">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card performance-summary">
+            <div class="dashboard-card-header">
+              <h3>Performance Summary</h3>
+              <a href="#" class="card-link">View full report</a>
+            </div>
+            <div class="stats-container grid-col-2">
+              <div class="stat-card">
+                <h3>12</h3>
+                <p>Cases Handled</p>
+              </div>
+              <div class="stat-card">
+                <h3>3</h3>
+                <p>Active Cases</p>
+              </div>
+            </div>
+            <div class="performance-metric">
+              <div class="metric-title">Case Success Rate</div>
+              <div class="metric-value">85%</div>
+            </div>
+            <div class="performance-metric">
+              <div class="metric-title">Client Satisfaction</div>
+              <div class="metric-value">92%</div>
+            </div>
+            <div class="performance-metric">
+              <div class="metric-title">Document Processing</div>
+              <div class="metric-value">78%</div>
+            </div>
+          </div>
+
+          <div class="dashboard-card peer-collaboration">
+            <div class="dashboard-card-header">
+              <h3>Peer Collaboration</h3>
+              <a href="#" class="card-link">View all peers</a>
+            </div>
+
+            <div class="client-row">
+              <div class="client-image">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Client"
+                />
+              </div>
+              <div class="client-info">
+                <div class="client-name">Jason Gill</div>
+                <div class="client-meta">Legal Research Group</div>
+              </div>
+              <div class="case-actions">
+                <div class="action-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="action-icon">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <button class="update-btn">Join Discussion</button>
+              </div>
+            </div>
+
+            <div class="client-row">
+              <div class="client-image">
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Client"
+                />
+              </div>
+              <div class="client-info">
+                <div class="client-name">Sarah Johnson</div>
+                <div class="client-meta">Document Templates</div>
+              </div>
+              <div class="case-actions">
+                <div class="action-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="action-icon">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <button class="update-btn">View Library</button>
+              </div>
+            </div>
+
+            <div class="client-row">
+              <div class="client-image">
+                <img
+                  src="https://randomuser.me/api/portraits/men/55.jpg"
+                  alt="Client"
+                />
+              </div>
+              <div class="client-info">
+                <div class="client-name">Carlos Lee</div>
+                <div class="client-meta">Pro Bono Cases</div>
+              </div>
+              <div class="case-actions">
+                <div class="action-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="action-icon">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <button class="update-btn">Join Discussion</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card quick-actions">
+            <div class="dashboard-card-header">
+              <h3>Quick Actions</h3>
+            </div>
+            <div class="grid-col-2" style="gap: 15px">
+              <button
+                class="btn btn-outline"
+                style="
+                  justify-content: center;
+                  height: 80px;
+                  flex-direction: column;
+                "
+              >
+                <i class="fas fa-file-lines" style="font-size: 24px"></i>
+                <span>Create New Case</span>
+              </button>
+              <button
+                class="btn btn-outline"
+                style="
+                  justify-content: center;
+                  height: 80px;
+                  flex-direction: column;
+                "
+              >
+                <i class="fas fa-calendar-plus" style="font-size: 24px"></i>
+                <span>Schedule Meeting</span>
+              </button>
+              <button
+                class="btn btn-outline"
+                style="
+                  justify-content: center;
+                  height: 80px;
+                  flex-direction: column;
+                "
+              >
+                <i class="fas fa-file-contract" style="font-size: 24px"></i>
+                <span>Draft Document</span>
+              </button>
+              <button
+                class="btn btn-outline"
+                style="
+                  justify-content: center;
+                  height: 80px;
+                  flex-direction: column;
+                "
+              >
+                <i class="fas fa-clock-rotate-left" style="font-size: 24px"></i>
+                <span>View Time Logs</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../javaScript/lawyer-dashboard.js"></script>
+  </body>
+</html>

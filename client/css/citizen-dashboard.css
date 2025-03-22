@@ -874,9 +874,9 @@ body.dark-mode .ai-assistant-card {
     grid-row: auto;
   }
 
-  .case-cards {
-    /* grid-template-columns: 1fr 1fr; */
-  }
+  /* .case-cards {
+    grid-template-columns: 1fr 1fr;
+  } */
 }
 
 @media (max-width: 768px) {

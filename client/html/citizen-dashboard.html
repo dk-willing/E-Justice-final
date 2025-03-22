@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Justice Ghana - Citizen Dashboard</title>
+    <link rel="stylesheet" href="../css/citizen-dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">
+          <img src="../images/e-justice logo.jpg" alt="E-Justice Ghana logo" />
+          <span>E-Justice <span class="highlight">Ghana</span></span>
+        </div>
+
+        <div class="dash lawyer">
+          <div class="lawyer abt">
+            <div class="profile-img">
+              <img src="../images/harvey.jpeg" alt="Harvey Spectre" />
+            </div>
+
+            <div>
+              <h1>Obed Ayer</h1>
+              <p>Citizen</p>
+            </div>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>My Cases</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fas fa-search"></i>
+            <span>Search Lawyers</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fas fa-book"></i>
+            <span>Legal Resources</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fas fa-question-circle"></i>
+            <span>Support & FAQs</span>
+          </a>
+        </nav>
+
+        <!-- Special Nav Icons -->
+        <div class="nav-item-special">
+          <div
+            class="nav-icon dark-mode-toggle"
+            style="cursor: pointer"
+            onclick="document.body.classList.toggle('dark-mode'); 
+                              const icon = document.querySelector('#darkModeIcon'); 
+                              if(document.body.classList.contains('dark-mode')) { 
+                                  icon.className = 'fas fa-sun'; 
+                                  localStorage.setItem('darkMode', 'enabled'); 
+                              } else { 
+                                  icon.className = 'fas fa-moon'; 
+                                  localStorage.setItem('darkMode', 'disabled'); 
+                              }"
+          >
+            <i class="fas fa-moon" id="darkModeIcon"></i>
+          </div>
+          <div class="nav-icon">
+            <i class="fas fa-gear"></i>
+          </div>
+          <div class="nav-icon" id="logout-btn" title="Logout">
+            <span class="material-symbols-outlined">account_circle</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+
+      <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+          <div class="header-title">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="user-profile-small">
+            <img src="../images/e-justice logo.jpg" alt="User profile" />
+          </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+          <h2>Welcome back, Obed!</h2>
+          <p>
+            Your legal journey is important to us. Here's an overview of your
+            current cases and upcoming appointments.
+          </p>
+          <div class="action-buttons">
+            <button class="btn primary">Book Consultation</button>
+            <button class="btn secondary">View all cases</button>
+            <button class="btn emergency">Emergency Legal Help</button>
+          </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+          <!-- Active Cases Section -->
+          <div class="section active-cases">
+            <div class="section-header">
+              <h3>Active Cases</h3>
+              <a href="#" class="view-all">View all</a>
+            </div>
+            <p class="section-subheader">Your ongoing legal cases</p>
+
+            <div class="case-cards">
+              <div class="case-card">
+                <div class="case-type">Property Dispute Resolution</div>
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 80%"></div>
+                  <span class="progress-text">80%</span>
+                </div>
+                <div class="case-details">
+                  <div class="lawyer-info">
+                    <img src="../images/harvey.jpeg" alt="Lawyer" />
+                    <div>
+                      <p>Assigned Lawyer:</p>
+                      <h4>Richard Martey</h4>
+                    </div>
+                  </div>
+                  <div class="case-actions">
+                    <button class="action-btn message">
+                      <i class="fas fa-comment"></i>
+                    </button>
+                    <button class="action-btn details">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="case-status">
+                  <span class="status active">Active</span>
+                </div>
+              </div>
+
+              <div class="case-card">
+                <div class="case-type">Employment Contract Review</div>
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 40%"></div>
+                  <span class="progress-text">40%</span>
+                </div>
+                <div class="case-details">
+                  <div class="lawyer-info">
+                    <img src="../images/mami.jpg" alt="Lawyer" />
+                    <div>
+                      <p>Assigned Lawyer:</p>
+                      <h4>Jessica Parker</h4>
+                    </div>
+                  </div>
+                  <div class="case-actions">
+                    <button class="action-btn message">
+                      <i class="fas fa-comment"></i>
+                    </button>
+                    <button class="action-btn details">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="case-status">
+                  <span class="status pending">In Progress</span>
+                </div>
+              </div>
+
+              <div class="case-card">
+                <div class="case-type">Child Support Agreement</div>
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 95%"></div>
+                  <span class="progress-text">95%</span>
+                </div>
+                <div class="case-details">
+                  <div class="lawyer-info">
+                    <img src="../images/manny.jpg" alt="Lawyer" />
+                    <div>
+                      <p>Assigned Lawyer:</p>
+                      <h4>Mary Jane</h4>
+                    </div>
+                  </div>
+                  <div class="case-actions">
+                    <button class="action-btn message">
+                      <i class="fas fa-comment"></i>
+                    </button>
+                    <button class="action-btn details">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="case-status">
+                  <span class="status finalizing">Finalizing</span>
+                </div>
+              </div>
+            </div>
+            <div class="submit-case">
+              <button class="btn primary full-width">Submit new case</button>
+            </div>
+          </div>
+
+          <!-- AI Legal Assistant Section -->
+          <div class="section ai-assistant">
+            <div class="section-header">
+              <h3>AI Legal Assistant</h3>
+            </div>
+            <div class="ai-container">
+              <p class="ai-intro">Get answers to your legal questions</p>
+              <div class="ai-suggestions">
+                <button class="suggestion-btn">
+                  <i class="fas fa-file-contract"></i>
+                  <span>Basic contracts</span>
+                </button>
+                <button class="suggestion-btn">
+                  <i class="fas fa-home"></i>
+                  <span>Rent agreements</span>
+                </button>
+                <button class="suggestion-btn">
+                  <i class="fas fa-gavel"></i>
+                  <span>Court process</span>
+                </button>
+                <button class="suggestion-btn">
+                  <i class="fas fa-balance-scale"></i>
+                  <span>Your rights</span>
+                </button>
+              </div>
+              <div class="ai-input">
+                <input type="text" placeholder="Type your question..." />
+                <button class="send-btn">
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming Appointments Section -->
+          <div class="section appointments">
+            <div class="section-header">
+              <h3>Upcoming Appointments</h3>
+              <a href="#" class="view-all">View all</a>
+            </div>
+            <div class="appointment-cards">
+              <div class="appointment-card">
+                <div class="appointment-date">
+                  <div class="date">15</div>
+                  <div class="month">May</div>
+                </div>
+                <div class="appointment-details">
+                  <h4>Case Review Meeting</h4>
+                  <p><i class="fas fa-clock"></i> 10:00 AM - 11:30 AM</p>
+                  <p><i class="fas fa-map-marker-alt"></i> Virtual Meeting</p>
+                </div>
+                <div class="appointment-actions">
+                  <button class="btn secondary small">Reschedule</button>
+                </div>
+              </div>
+
+              <div class="appointment-card">
+                <div class="appointment-date">
+                  <div class="date">22</div>
+                  <div class="month">May</div>
+                </div>
+                <div class="appointment-details">
+                  <h4>New Court Hearing</h4>
+                  <p><i class="fas fa-clock"></i> 9:00 AM - 12:00 PM</p>
+                  <p><i class="fas fa-map-marker-alt"></i> High Court, Accra</p>
+                </div>
+                <div class="appointment-actions">
+                  <button class="btn secondary small">Directions</button>
+                </div>
+              </div>
+            </div>
+            <button class="btn outline full-width">Book an Appointment</button>
+          </div>
+
+          <!-- Legal Updates Section -->
+          <div class="section legal-updates">
+            <div class="section-header">
+              <h3>Legal Updates</h3>
+              <a href="#" class="view-all">View all</a>
+            </div>
+            <div class="updates-container">
+              <div class="update-card">
+                <div class="update-icon">
+                  <i class="fas fa-gavel"></i>
+                </div>
+                <div class="update-details">
+                  <h4>Changes to Employment Act</h4>
+                  <p>New regulations affecting contract workers</p>
+                  <p class="update-date">Published: May 10, 2025</p>
+                </div>
+              </div>
+
+              <div class="update-card">
+                <div class="update-icon">
+                  <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="update-details">
+                  <h4>Supreme Court Ruling</h4>
+                  <p>Important decision affecting property rights</p>
+                  <p class="update-date">Published: May 5, 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Documents Section -->
+          <div class="section documents">
+            <div class="section-header">
+              <h3>Recent Documents</h3>
+              <a href="#" class="view-all">View all documents</a>
+            </div>
+            <div class="document-cards">
+              <div class="document-card">
+                <div class="document-icon">
+                  <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="document-details">
+                  <h4>Property_Deed.pdf</h4>
+                  <p>Uploaded: 3 days ago</p>
+                </div>
+                <button class="download-btn">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+
+              <div class="document-card">
+                <div class="document-icon">
+                  <i class="fas fa-file-word"></i>
+                </div>
+                <div class="document-details">
+                  <h4>Contract_Draft_v2.docx</h4>
+                  <p>Uploaded: 1 week ago</p>
+                </div>
+                <button class="download-btn">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../javaScript/citizen-dashboard.js"></script>
+  </body>
+</html>

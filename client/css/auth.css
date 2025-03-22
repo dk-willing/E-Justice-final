@@ -1,0 +1,469 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  /* font-family: 'Arial', sans-serif; */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: #fff;
+}
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding: 0 5%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100vh;
+}
+.auth-box {
+  border-radius: 15px;
+  padding: 50px;
+  width: 100%;
+  display: flex;
+  margin-top: 100px;
+
+  transition: all 0.4s;
+}
+.left-section {
+  background-color: #2b3e5c;
+  padding: 20px;
+  border-radius: 15px 0 0 15px;
+  width: 70%;
+}
+.left-section p {
+  margin-bottom: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+.right-section {
+  background-color: #122038;
+  padding: 20px;
+  border-radius: 0 15px 15px 0;
+  width: 70%;
+}
+.welcome-text {
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+.brand-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.brand-title span {
+  color: goldenrod;
+}
+.left-section h4 {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+.description h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.description p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-size: 12px;
+  text-align: center;
+}
+.extra-options {
+  display: flex;
+  font-size: 11px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.extra-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.extra-options h4 {
+  margin: 0;
+}
+.terms p {
+  margin-bottom: 10px;
+  font-size: 11px;
+  text-align: center;
+}
+.terms label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.terms p span {
+  color: blue;
+}
+.toggle-theme button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+}
+.tab-switch {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+  margin: 0 auto 20px auto;
+}
+.slider-container {
+  display: flex;
+  justify-content: space-between;
+  background: #35496e;
+  border-radius: 20px;
+  padding: 10px;
+  position: relative;
+  width: 300px;
+}
+.slider-ball {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5px;
+  width: 30%;
+  height: 80%;
+  background: #50698e;
+  border-radius: 15px;
+  transition: left 0.3s ease;
+}
+.tab {
+  background: transparent;
+  color: #fff;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+  z-index: 1;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+/* Active tab styling */
+.tab.active {
+  /* background: rgb(31, 25, 25); */
+  color: #fff;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #3c506e;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+.input-container input {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px;
+  color: #fff;
+  margin-left: 8px;
+  flex: 1;
+}
+.submit-btn {
+  background-color: #3f8efc;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  width: 50%;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 5rem;
+  font-size: 13px;
+}
+.or-continue {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 10px;
+  display: flex;
+}
+.or-continue::before,
+.or-continue::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  margin: 0 5px;
+  margin-top: 5px;
+}
+.social-buttons a {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #50698c;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+.social-buttons {
+  margin-left: 3rem;
+}
+.features {
+  background-color: #1a2c49;
+  border: 1px solid goldenrod;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+.features p {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.features span {
+  margin-right: 8px;
+  color: goldenrod;
+}
+.toggle-theme {
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+}
+.toggle-theme .material-symbols-outlined {
+  color: #fff;
+  /* background-color: rgb(133, 172, 226); */
+  font-size: 20px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+}
+.forget {
+  margin-left: 7rem;
+  font-size: 13px;
+  text-decoration: none;
+}
+.auth-form label {
+  font-size: 12px;
+}
+/* Light Mode */
+body.light-mode {
+  background-color: rgb(30, 27, 27);
+}
+.right-section.light-mode {
+  background-color: rgb(247, 247, 249);
+  color: black;
+}
+.toggle-theme .material-symbols-outlined {
+  color: #fff;
+  background-color: rgb(107, 162, 243);
+}
+.light-mode .or-continue::before,
+.light-mode .or-continue::after {
+  background: black;
+}
+.auth-box.light-mode {
+  background-color: #fff;
+  color: gray;
+}
+.submit-btn.light-mode {
+  background-color: #3f8efc;
+  color: #fff;
+}
+
+.social-buttons a.light-mode {
+  background-color: rgb(94, 170, 184);
+  color: #fff;
+}
+.toggle-theme button.light-mode {
+  color: #333;
+}
+/* Dark Mode */
+.auth-box.dark-mode {
+  background-color: #444;
+  color: #f4f4f4;
+}
+.right-section.dark-mode {
+  background-color: #122038;
+  color: #fff;
+}
+.dark-mode .material-symbols-outlined {
+  color: #fff;
+  /* background-color: rgb(19, 23, 31); */
+}
+.submit-btn.dark-mode {
+  background-color: #1c5fb8;
+  color: #fff;
+}
+.or-continue::before,
+.or-continue::after {
+  background: #fff;
+}
+.social-buttons a.dark-mode {
+  background-color: #555;
+  color: #f4f4f4;
+}
+.toggle-theme button.dark-mode {
+  color: #f4f4f4;
+}
+.extra-options a {
+  text-decoration: none;
+  margin-left: 3rem;
+  color: #6797f7;
+}
+
+/* Responsiveness*/
+
+/*Desktop and other lager screens*/
+
+@media (min-width: 1025px) {
+  .auth-container {
+    margin-left: 15rem;
+    margin-top: 0;
+  }
+  .auth-box {
+    border-radius: 15px;
+    padding: 50px;
+    width: 100%;
+    display: flex;
+  }
+  .forget-p {
+    text-decoration: none;
+    color: blue;
+    font-size: 14px;
+    margin-left: 8rem;
+    cursor: pointer;
+  }
+  .forget-p .light-mode {
+    color: #333;
+  }
+  .social-buttons {
+    margin-left: 3rem;
+  }
+}
+
+/*laptop and tablet screens landscape*/
+@media (min-width: 769px) and (max-width: 1024) {
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-left: 0;
+  }
+  .auth-box {
+    border-radius: 15px;
+    padding: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .left-section {
+    border-radius: 15px 15px 0 0;
+    padding: 20px;
+    width: 100%;
+  }
+  .right-section {
+    border-radius: 0 0 15px 15px;
+    padding: 20px;
+    width: 100%;
+  }
+  .forget-p {
+    text-decoration: none;
+    color: blue;
+    font-size: 14px;
+    margin-left: 13rem;
+    cursor: pointer;
+  }
+  .forget-p .light-mode {
+    color: #333;
+  }
+  .social-buttons {
+    margin-left: 5rem;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-left: 0;
+  }
+  .auth-box {
+    border-radius: 15px;
+    padding: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .left-section {
+    border-radius: 15px 15px 0 0;
+    padding: 20px;
+    width: 100%;
+  }
+  .right-section {
+    border-radius: 0 0 15px 15px;
+    padding: 20px;
+    width: 100%;
+  }
+  .forget-p {
+    text-decoration: none;
+    color: blue;
+    font-size: 14px;
+    margin-left: 13rem;
+    cursor: pointer;
+  }
+  .forget-p .light-mode {
+    color: #333;
+  }
+  .social-buttons {
+    margin-left: 5rem;
+  }
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+/* Your existing styles.css content remains unchanged up to the end */
+
+/* Add these styles at the bottom--Will be removed */
+#dashboard {
+  text-align: center;
+  padding: 50px;
+  background-color: #122038; /* Match dark mode */
+  color: #fff;
+  border-radius: 15px;
+  margin: 0 auto;
+  width: 50%;
+}
+
+#dashboard.light-mode {
+  background-color: rgb(247, 247, 249);
+  color: #333;
+}
+
+#dashboard h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#dashboard p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+#dashboard .submit-btn {
+  width: auto;
+  padding: 10px 20px;
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Register - E-Justice Ghana</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Remix CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="toggle-theme">
+      <button id="themeToggle" class="material-symbols-outlined">
+        <!-- <span>dark_mode</span> -->
+        <i></i>
+      </button>
+    </div>
+    <div class="auth-container">
+      <div class="auth-box">
+        <section class="left-section">
+          <div class="brand-title">E - Justice <span>Ghana</span></div>
+          <p class="welcome-text" id="welcome-text">
+            Welcome Back<br />Access Justice, Anytime, Anywhere
+          </p>
+          <div class="features">
+            <p>
+              <span class="material-symbols-outlined">check_circle</span> Access
+              to qualified legal professionals
+            </p>
+            <p>
+              <span class="material-symbols-outlined">check_circle</span>
+              Real-time case tracking and updates
+            </p>
+            <p>
+              <span class="material-symbols-outlined">check_circle</span> Secure
+              document sharing and communication
+            </p>
+          </div>
+        </section>
+        <section class="right-section">
+          <div class="tab-switch">
+            <div class="slider-container">
+              <div class="slider-ball"></div>
+              <button class="tab active" onclick="switchTab('login')">
+                Log In
+              </button>
+              <button class="tab" onclick="switchTab('register')">
+                Register
+              </button>
+            </div>
+          </div>
+
+          <!-- Login Form -->
+          <form id="login-form" class="auth-form">
+            <div class="description">
+              <h4>Welcome Back to E - Justice Ghana</h4>
+              <p>Access Justice, Anytime, Anywhere</p>
+            </div>
+            <label>Email</label>
+            <div class="input-container">
+              <!-- <span class="material-symbols-outlined">email</span> -->
+              <i class="ri-mail-line material-symbols-outlined"></i>
+              <input
+                type="email"
+                placeholder="name@example.com"
+                name="email"
+                required
+              />
+            </div>
+            <label>Password</label>
+            <div class="input-container">
+              <span class="material-symbols-outlined toggle-password"
+                >lock</span
+              >
+              <input
+                type="password"
+                placeholder="••••••••"
+                name="password"
+                required
+              />
+            </div>
+            <div class="extra-options">
+              <label
+                ><input type="checkbox" name="remember" />Remember me</label
+              >
+              <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+          </form>
+
+          <!-- Register Form -->
+          <form id="register-form" class="auth-form" style="display: none">
+            <div class="description">
+              <h4>Create Your Free E - Justice Ghana Account</h4>
+              <p>Join our platform to access legal services</p>
+            </div>
+            <label>Full Name</label>
+            <div class="input-container">
+              <span class="material-symbols-outlined">person</span>
+              <input
+                type="text"
+                placeholder="Full name"
+                name="fullName"
+                required
+              />
+            </div>
+            <label>Email</label>
+            <div class="input-container">
+              <span class="material-symbols-outlined">email</span>
+              <input
+                type="email"
+                placeholder="name@example.com"
+                name="email"
+                required
+              />
+            </div>
+            <label>Phone</label>
+            <div class="input-container">
+              <span class="material-symbols-outlined">phone</span>
+              <input type="text" placeholder="Phone" name="phone" required />
+            </div>
+            <label>Location</label>
+            <div class="input-container">
+              <span class="material-symbols-outlined">location_on</span>
+              <input
+                type="text"
+                placeholder="Location"
+                name="location"
+                required
+              />
+            </div>
+            <label>Password</label>
+            <div class="input-container">
+              <span class="material-symbols-outlined toggle-password"
+                >lock</span
+              >
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="extra-options">
+              <h4>I am a</h4>
+              <label
+                ><input
+                  type="radio"
+                  name="userType"
+                  value="CITIZEN"
+                  checked
+                />Citizen</label
+              >
+              <label
+                ><input type="radio" name="userType" value="LAWYER" />Legal
+                Professional</label
+              >
+            </div>
+            <div id="lawyer-fields" style="display: none">
+              <label>Specialization</label>
+              <div class="input-container">
+                <span class="material-symbols-outlined">work</span>
+                <input
+                  type="text"
+                  placeholder="Specialization"
+                  name="specialization"
+                />
+              </div>
+              <label>Experience</label>
+              <div class="input-container">
+                <span class="material-symbols-outlined">history</span>
+                <input
+                  type="number"
+                  placeholder="Experience (years)"
+                  name="experience"
+                />
+              </div>
+              <label>License Number</label>
+              <div class="input-container">
+                <span class="material-symbols-outlined">badge</span>
+                <input
+                  type="text"
+                  placeholder="License Number"
+                  name="licenseNumber"
+                />
+              </div>
+              <label>Verification Document</label>
+              <div class="input-container">
+                <span class="material-symbols-outlined">upload_file</span>
+                <input
+                  type="file"
+                  name="verificationDocument"
+                  accept="image/*,.pdf"
+                />
+              </div>
+            </div>
+            <div class="terms">
+              <label
+                ><input type="checkbox" required />Accept terms and
+                conditions</label
+              >
+              <p>
+                By creating an account, you agree to our
+                <span>Terms of Service</span> and <span>Privacy Policy.</span>
+              </p>
+            </div>
+            <button type="submit" class="submit-btn">Register</button>
+          </form>
+
+          <p class="or-continue">OR CONTINUE WITH</p>
+          <div class="social-buttons">
+            <a href="#" class="google-btn"
+              ><i class="fab fa-google-plus-g" style="color: #db4437"></i>
+              Google</a
+            >
+            <a href="#" class="facebook-btn"
+              ><i class="fab fa-facebook-f" style="color: #6797f7"></i>
+              Facebook</a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="dashboard" style="display: none">
+      <h2>Welcome to Your Dashboard</h2>
+      <p id="user-info"></p>
+      <button id="logout" class="submit-btn">Logout</button>
+    </div>
+
+    <script src="../javaScript/auth.js"></script>
+  </body>
+</html>

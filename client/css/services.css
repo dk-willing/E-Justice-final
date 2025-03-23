@@ -8,9 +8,6 @@
 }
 
 body {
-  height: 100vh;
-  font-family: "sans-serif", "Helvetica Neue", "Roboto";
-  box-sizing: border-box;
   overflow-x: hidden;
 }
 header {
@@ -19,11 +16,9 @@ header {
   width: 100%;
   z-index: 100;
 }
-
 .logo {
   display: flex;
   align-items: center;
-  /* margin-top: 2rem; */
 }
 
 .logo img {
@@ -39,12 +34,11 @@ header {
   font-weight: 600;
   color: var(--secondary-color);
 }
-
 .navbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
+  align-items: center;
+  padding: 10px 20px;
   background: white;
   color: black;
 }
@@ -61,7 +55,6 @@ header {
 }
 .nav-links li {
   margin-left: 20px;
-  font-size: 14px;
 }
 .navbar a:hover {
   color: darkgoldenrod;
@@ -72,12 +65,11 @@ header {
   color: black;
   text-decoration: none;
   transition: color 0.3s ease;
-  font-size: 18px;
+  font-size: 14px;
 }
 .nav-links li a .material-symbols-outlined {
-  display: none; /* Icons hidden by default */
+  display: none;
 }
-/* Hamburger Menu */
 .hamburger {
   display: none;
   cursor: pointer;
@@ -85,39 +77,38 @@ header {
   gap: 5px;
   transition: transform 0.3s ease;
   color: blue;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .hamburger div {
   width: 30px;
   height: 3px;
-  background-color: blue; /* Dark grey */
+  background-color: blue;
   margin: 5px 0;
   transition: 0.3s;
 }
-/* Close Icon (X) Styles*/
+
 .hamburger.active .fa-bars::before {
   content: "\f00d";
 }
-/*Smooth transition*/
+
 .hamburger .fa-bars::before {
   transition: transform 0.3s ease, content 0.3s ease;
 }
 
 .hamburger.active .fa-bars::before {
-  transform: rotate(90deg); /* Optional: Add a rotation effect */
+  transform: rotate(90deg);
 }
-/* Show icons only when the hamburger is active (on smaller screens) */
 .hamburger.active ~ .nav-links .material-symbols-outlined {
   display: inline-block;
-  margin-right: 5px; /* Space between icon and text */
+  margin-right: 5px;
 }
 .login {
   border: 1px solid white;
   border-radius: 5px;
-  background-color: #e8ad2fed;
+  background-color: rgba(232, 173, 47, 0.93);
   color: white;
-  padding: 5px 15px;
+  padding: 5px 30px;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
@@ -127,40 +118,7 @@ header {
   transform: scale(1.1);
   color: white;
 }
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: goldenrod;
-  padding: 0;
-  margin: 0;
-  border-radius: 5px;
-  min-width: 170px;
-  border: 1px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.dropdown-menu li {
-  display: block;
-}
-.dropdown-menu li a {
-  display: block;
-  padding: 5px;
-  color: black;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.dropdown-menu.show {
-  display: block;
-}
-.dropdown span.material-symbols-outlined {
-  transform: rotate(0deg);
-  transition: transform 0.3s ease;
-}
-/* Active state (facing down) */
-.dropdown.active span.material-symbols-outlined {
-  transform: rotate(90deg); /* Rotate 90 degrees to face down */
-}
+
 .hero-section {
   background-color: #f8f5ed;
   display: flex;
@@ -246,8 +204,8 @@ header {
 }
 
 .educate-card a {
-  font-size: 8px;
-  margin-top: 20px;
+  font-size: 12px;
+  margin-top: auto;
 }
 
 .educate-button {
@@ -379,12 +337,18 @@ header {
   flex-direction: column;
   background-color: #fff;
   align-items: center;
-  padding: 10px;
+  /* padding: 10px; */
   text-align: left;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
+
+.feature-card-body {
+  padding: 10px 5%;
+  width: 100%;
+}
+
 .feature-card2 img {
   width: 100%;
   height: 20rem;
@@ -1118,4 +1082,49 @@ header {
   .footer-bottom {
     gap: 5rem;
   }
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.772);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: left;
+}
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
 }

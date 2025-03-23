@@ -3,9 +3,13 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
+const db = process.env.DATABSE_CONNECTION_STRING.replace(
+  '<db_password>',
+  process.env.DATABSE_PASSWARD
+);
 // MongoDB Connection
 mongoose
-  .connect(process.env.DATABSE_LOCAL, {
+  .connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

@@ -12,24 +12,18 @@ router.post('/initialize', authMiddleware, async (req, res) => {
     const userId = req.user;
     const { amount, email, metadata } = req.body;
 
-    // Debug the request body
-    console.log('Request Body:', { amount, email, metadata, userId });
-
     // Validate input
     if (!amount || !email) {
-      return res.status(400).json({ message: 'Amount and email are required' });
+      return res.status(400).json({ message: 'Please enter Amount and Email' });
     }
-
-    const amountInPesewas = amount * 100;
-    console.log('Amount in Pesewas:', amountInPesewas);
-
     // Make a direct API call to Paystack to initialize the transaction
+    const amountInPesewas = amount * 100;
     const response = await axios.post(
       `${PAYSTACK_API_BASE_URL}/transaction/initialize`,
       {
         email,
         amount: amountInPesewas,
-        currency: 'GHS', // Explicitly set currency to GHS
+        currency: 'GHS',
         callback_url: 'http://localhost:5000/api/payments/verify', // Callback URL after payment
         channels: ['card', 'mobile_money'], // Enable card and mobile money for Ghana
         metadata: metadata || { userId }, // Optional metadata

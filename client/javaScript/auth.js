@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Register
   registerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const formData = new FormData(registerForm);
     const jsonData = Object.fromEntries(formData);
 
@@ -178,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     userData.append('role', jsonData.userType);
 
     if (jsonData.userType === 'LAWYER') {
+      alert('Please wait while we verify your provided documents.Thank You.');
       userData.append('specialization', jsonData.specialization || '');
       userData.append(
         'experience',

@@ -19,6 +19,9 @@
       rel="stylesheet"
     />
 
+    <!-- Add axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="../css/auth.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -32,7 +35,6 @@
   <body>
     <div class="toggle-theme">
       <button id="themeToggle" class="material-symbols-outlined">
-        <!-- <span>dark_mode</span> -->
         <i></i>
       </button>
     </div>
@@ -48,7 +50,6 @@
               <span class="material-symbols-outlined"
                 ><i class="ri-checkbox-circle-line"></i
               ></span>
-
               <span class="desc">
                 Access to qualified legal professionals
               </span>
@@ -90,7 +91,6 @@
             </div>
             <label class="field">Email</label>
             <div class="input-container">
-              <!-- <span class="material-symbols-outlined">email</span> -->
               <i class="ri-mail-line material-symbols-outlined"></i>
               <input
                 type="email"
@@ -104,7 +104,6 @@
               <span class="material-symbols-outlined toggle-password"
                 ><i class="ri-eye-off-line"></i
               ></span>
-
               <input
                 type="password"
                 placeholder="••••••••"
@@ -253,12 +252,6 @@
           </div>
         </section>
       </div>
-    </div>
-
-    <div id="dashboard" style="display: none">
-      <h2>Welcome to Your Dashboard</h2>
-      <p id="user-info"></p>
-      <button id="logout" class="submit-btn">Logout</button>
     </div>
 
     <script src="../javaScript/auth.js"></script>

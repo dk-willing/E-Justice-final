@@ -9,9 +9,11 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.userId; // Attach user ID to request
+    req.user = decoded.userId; // Store userId in req.user
+    req.role = decoded.role; // Store role in req.role
     next();
   } catch (error) {
+    console.error('Error in authMiddleware:', error.message, error.stack);
     res.status(401).json({ message: 'Token is not valid' });
   }
 };

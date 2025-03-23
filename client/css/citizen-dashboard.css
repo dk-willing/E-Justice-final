@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: "Lexend", sans-serif;
+  font-family: 'Lexend', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -924,3 +924,13 @@ body.dark-mode .ai-assistant-card {
     width: 100%;
   }
 }
+
+/* Add styling for the assign button */
+/* .action-btn.assign {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.action-btn.assign:hover {
+  background-color: #c3e6cb;
+} */

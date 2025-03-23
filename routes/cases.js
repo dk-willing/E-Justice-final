@@ -11,7 +11,7 @@ router.post('/create', authMiddleware, async (req, res) => {
 
   try {
     const user = await User.findById(req.user);
-    if (!user || user.userType !== 'CITIZEN') {
+    if (!user || user.role !== 'CITIZEN') {
       return res
         .status(403)
         .json({ message: 'Only citizens can create cases' });
@@ -28,6 +28,7 @@ router.post('/create', authMiddleware, async (req, res) => {
       .status(201)
       .json({ message: 'Case created successfully', case: newCase });
   } catch (error) {
+    console.error('Error in /api/cases/create:', error.message, error.stack);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
@@ -39,20 +40,49 @@ router.get('/my-cases', authMiddleware, async (req, res) => {
     if (!user) return res.status(404).json({ message: 'User not found' });
 
     let cases;
-    if (user.userType === 'CITIZEN') {
+    if (user.role === 'CITIZEN') {
       cases = await Case.find({ citizen: req.user }).populate(
         'lawyer',
-        'fullName specialization'
+        'name specialization'
       );
-    } else if (user.userType === 'LAWYER') {
-      cases = await Case.find({ lawyer: req.user }).populate(
-        'citizen',
-        'fullName'
-      );
+    } else if (user.role === 'LAWYER') {
+      cases = await Case.find({ lawyer: req.user }).populate('citizen', 'name');
     }
 
     res.json(cases);
   } catch (error) {
+    console.error('Error in /api/cases/my-cases:', error.message, error.stack);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+// Get cases assigned to the logged-in lawyer (for lawyer dashboard)
+router.get('/lawyer', authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (user.role !== 'LAWYER') {
+      return res
+        .status(403)
+        .json({ message: 'Only lawyers can access this endpoint' });
+    }
+
+    const cases = await Case.find({ lawyer: req.user }).populate(
+      'citizen',
+      'name'
+    );
+    // Format the response to match what the frontend expects
+    const formattedCases = cases.map((caseItem) => ({
+      _id: caseItem._id,
+      title: caseItem.title,
+      startDate: caseItem.createdAt || new Date(), // Use createdAt if startDate isn't a field
+      progress: caseItem.progress || 0, // Add progress field if it exists in your Case model
+      type: caseItem.type || 'Civil Progress', // Add a type field (mocked if not in model)
+    }));
+
+    res.json({ cases: formattedCases });
+  } catch (error) {
+    console.error('Error in /api/cases/lawyer:', error.message, error.stack);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
@@ -66,17 +96,21 @@ router.put('/assign/:caseId', authMiddleware, async (req, res) => {
     if (!caseDoc) return res.status(404).json({ message: 'Case not found' });
 
     const lawyer = await User.findById(lawyerId);
-    if (!lawyer || lawyer.userType !== 'LAWYER' || !lawyer.isVerified) {
+    if (!lawyer || lawyer.role !== 'LAWYER' || !lawyer.isVerified) {
       return res.status(400).json({ message: 'Invalid or unverified lawyer' });
     }
 
-    // For now, anyone can assign; later, restrict to admins
     caseDoc.lawyer = lawyerId;
     caseDoc.status = 'LAWYER_ASSIGNED';
     await caseDoc.save();
 
     res.json({ message: 'Lawyer assigned successfully', case: caseDoc });
   } catch (error) {
+    console.error(
+      'Error in /api/cases/assign/:caseId:',
+      error.message,
+      error.stack
+    );
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
@@ -90,7 +124,7 @@ router.put('/update-status/:caseId', authMiddleware, async (req, res) => {
     if (!caseDoc) return res.status(404).json({ message: 'Case not found' });
 
     const user = await User.findById(req.user);
-    if (user.userType === 'LAWYER' && caseDoc.lawyer.toString() !== req.user) {
+    if (user.role === 'LAWYER' && caseDoc.lawyer?.toString() !== req.user) {
       return res
         .status(403)
         .json({ message: 'Only the assigned lawyer can update this case' });
@@ -109,6 +143,11 @@ router.put('/update-status/:caseId', authMiddleware, async (req, res) => {
 
     res.json({ message: 'Case status updated successfully', case: caseDoc });
   } catch (error) {
+    console.error(
+      'Error in /api/cases/update-status/:caseId:',
+      error.message,
+      error.stack
+    );
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
@@ -149,6 +188,11 @@ router.post(
         .status(201)
         .json({ message: 'Document uploaded successfully', document });
     } catch (error) {
+      console.error(
+        'Error in /api/cases/upload-document/:caseId:',
+        error.message,
+        error.stack
+      );
       res.status(500).json({ message: 'Server error', error: error.message });
     }
   }
@@ -159,7 +203,7 @@ router.get('/documents/:caseId', authMiddleware, async (req, res) => {
   try {
     const caseDoc = await Case.findById(req.params.caseId).populate(
       'documents.uploadedBy',
-      'fullName userType'
+      'name role'
     );
     if (!caseDoc) return res.status(404).json({ message: 'Case not found' });
 
@@ -175,6 +219,54 @@ router.get('/documents/:caseId', authMiddleware, async (req, res) => {
 
     res.json(caseDoc.documents);
   } catch (error) {
+    console.error(
+      'Error in /api/cases/documents/:caseId:',
+      error.message,
+      error.stack
+    );
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+// Get user's cases (alternative endpoint, can be removed if not needed)
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const cases = await Case.find({ userId: req.user }).populate(
+      'lawyer',
+      'name profileImage'
+    );
+    res.json({ cases });
+  } catch (error) {
+    console.error('Error in /api/cases:', error.message, error.stack);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+// Submit a new case (alternative endpoint, can be removed if not needed)
+router.post('/', authMiddleware, async (req, res) => {
+  try {
+    const { title, description } = req.body;
+
+    if (!title || !description) {
+      return res
+        .status(400)
+        .json({ message: 'Title and description are required' });
+    }
+
+    const newCase = new Case({
+      title,
+      description,
+      userId: req.user,
+      status: 'In Progress',
+      progress: 0,
+    });
+
+    await newCase.save();
+    res
+      .status(201)
+      .json({ message: 'Case submitted successfully', case: newCase });
+  } catch (error) {
+    console.error('Error in /api/cases (POST):', error.message, error.stack);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });

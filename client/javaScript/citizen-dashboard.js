@@ -131,7 +131,7 @@ function performSearch(query) {
     return;
   }
 
-  // In a real application, this would connect to a backend search
+  
   console.log('Searching for:', query);
   alert(`Searching for: ${query}`);
 }

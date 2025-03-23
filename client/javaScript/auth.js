@@ -170,19 +170,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Register
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const formData = new FormData(registerForm);
     const jsonData = Object.fromEntries(formData);
 
     const userData = new FormData();
-    userData.append("name", jsonData.fullName);
-    userData.append("email", jsonData.email);
-    userData.append("phone", jsonData.phone);
-    userData.append("location", jsonData.location);
-    userData.append("password", jsonData.password);
-    userData.append("role", jsonData.userType);
+    userData.append('name', jsonData.fullName);
+    userData.append('email', jsonData.email);
+    userData.append('phone', jsonData.phone);
+    userData.append('location', jsonData.location);
+    userData.append('password', jsonData.password);
+    userData.append('role', jsonData.userType);
 
-    if (jsonData.userType === "LAWYER") {
-      userData.append("specialization", jsonData.specialization || "");
+    if (jsonData.userType === 'LAWYER') {
+      alert('Please wait while we verify your provided documents.Thank You.');
+      userData.append('specialization', jsonData.specialization || '');
       userData.append(
         "experience",
         jsonData.experience ? parseInt(jsonData.experience) : 0

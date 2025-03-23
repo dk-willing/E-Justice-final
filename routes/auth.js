@@ -31,7 +31,7 @@ const upload = multer({
   },
 });
 
-// Sign Up (POST /api/auth/signup)
+// Sign Up
 router.post(
   '/signup',
   upload.single('verificationDocument'),
@@ -63,17 +63,15 @@ router.post(
       }
 
       // Validate password length
-      if (password.length < 6) {
+      if (password.length < 7) {
         return res
           .status(400)
-          .json({ message: 'Password must be at least 6 characters long' });
+          .json({ message: 'Password must be at least 7 characters long' });
       }
 
       // Validate role
       if (!['CITIZEN', 'LAWYER'].includes(role)) {
-        return res
-          .status(400)
-          .json({ message: 'Invalid role. Must be CITIZEN or LAWYER' });
+        return res.status(400).json({ message: 'Must be CITIZEN or LAWYER' });
       }
 
       // Validate lawyer-specific fields if role is LAWYER
@@ -94,7 +92,7 @@ router.post(
       // Check if user already exists
       const existingUser = await User.findOne({ email });
       if (existingUser) {
-        return res.status(400).json({ message: 'Email already exists' });
+        return res.status(400).json({ message: 'User Already Exist.' });
       }
 
       // Hash the password
@@ -123,7 +121,7 @@ router.post(
       const token = jwt.sign(
         { id: user._id, role: user.role },
         process.env.JWT_SECRET,
-        { expiresIn: '1h' }
+        { expiresIn: '2h' }
       );
 
       // Send response
@@ -143,36 +141,35 @@ router.post(
   }
 );
 
-// Sign In (POST /api/auth/signin)
+// Sign In
 router.post('/signin', async (req, res) => {
   try {
-    console.log('Handling /signin request...');
     const { email, password } = req.body;
 
     // Validate input
     if (!email || !password) {
       return res
         .status(400)
-        .json({ message: 'Email and password are required' });
+        .json({ message: 'Email or password are not corrrect!' });
     }
 
     // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: 'User Not Found!' });
     }
 
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Invalid email or password!' });
     }
 
     // Generate JWT token
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: '1h' }
+      { expiresIn: '2h' }
     );
 
     // Send response
@@ -181,7 +178,7 @@ router.post('/signin', async (req, res) => {
       user: {
         fid: user._id,
         email: user.email,
-        role: user.role, // This should include the role
+        role: user.role,
       },
     });
   } catch (error) {
@@ -211,7 +208,7 @@ router.get('/profile', authMiddleware, async (req, res) => {
   }
 });
 
-// Logout (POST /api/auth/logout)
+// Logout
 router.post('/logout', authMiddleware, async (req, res) => {
   try {
     res.json({ message: 'Logged out successfully', action: 'clearToken' });

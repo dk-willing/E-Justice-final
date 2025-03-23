@@ -224,7 +224,9 @@
               </div>
             </div>
             <div class="submit-case">
-              <button class="btn primary full-width">Submit new case</button>
+              <button class="btn primary full-width" onclick="openCaseModal()">
+                Submit new case
+              </button>
             </div>
           </div>
 
@@ -459,6 +461,30 @@
       </div>
     </div>
 
+    <!-- Case Modal -->
+    <div id="case-modal" class="modal-case" style="display: none">
+      <div class="modal-case-content">
+        <span class="close-case" onclick="closeCaseModal()">&times;</span>
+        <h2>Submit a New Case</h2>
+        <form id="case-form">
+          <label for="case-title">Case Title:</label>
+          <input type="text" id="case-title" class="case-input" required />
+
+          <label for="case-description">Case Description:</label>
+          <textarea
+            id="case-description"
+            class="case-textarea"
+            required
+          ></textarea>
+
+          <button type="submit" class="case-submit-btn">Submit</button>
+        </form>
+        <div id="case-confirmation" class="case-confirmation hidden">
+          <p>Your case is being reviewed. You will receive updates soon.</p>
+        </div>
+      </div>
+    </div>
+
     <script src="../javaScript/citizen-dashboard.js"></script>
     <script>
       function openModal() {
@@ -484,6 +510,31 @@
           }
         });
       });
+
+      let caseUnderReview = false;
+
+      function openCaseModal() {
+        if (caseUnderReview) {
+          alert(
+            "You cannot submit a new case until your previous case is reviewed."
+          );
+          return;
+        }
+        document.getElementById("case-modal").style.display = "flex";
+      }
+
+      function closeCaseModal() {
+        document.getElementById("case-modal").style.display = "none";
+      }
+
+      document
+        .getElementById("case-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          caseUnderReview = true;
+          document.getElementById("case-form").style.display = "none";
+          document.getElementById("case-confirmation").style.display = "block";
+        });
     </script>
   </body>
 </html>

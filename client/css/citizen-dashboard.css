@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: 'Lexend', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -177,18 +177,8 @@ body {
 
 .nav-item.active {
   background-color: #f0f4ff;
-  color: var(--accent-color);
+  /* color: var(--accent-color); */
   font-weight: 500;
-}
-
-/* Green home button */
-.sidebar-nav a.nav-item:first-child {
-  background-color: #20af61;
-  color: white;
-}
-
-.sidebar-nav a.nav-item:first-child:hover {
-  background-color: #1c9954;
 }
 
 .nav-item:hover {
@@ -934,3 +924,249 @@ body.dark-mode .ai-assistant-card {
 .action-btn.assign:hover {
   background-color: #c3e6cb;
 } */
+
+.primary-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.primary-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Popup Modal */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Modal Box */
+.popup-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Icon */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* Form Container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Action Button */
+.action-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.action-btn:hover {
+  background-color: #218838;
+}
+
+/* Search Modal */
+.search-btn {
+  background-color: #007bff;
+  backdrop-filter: blur(2px);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Background */
+.search-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.635);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content */
+.search-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 450px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Close Button */
+.close-search {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-search:hover {
+  color: red;
+}
+
+/* Search Input */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Search Action Button */
+.search-action-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-action-btn:hover {
+  background-color: #218838;
+}
+
+.faq-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.712);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+}
+.faq-modal-content {
+  background-color: white;
+  backdrop-filter: blur(2px);
+  padding: 40px;
+  border-radius: 10px;
+  width: 500px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.faq-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.faq-close:hover {
+  color: red;
+}
+
+/* Accordion Styling */
+.accordion {
+  margin-top: 20px;
+}
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+  transition: all 0.4s;
+}
+.accordion-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.accordion-btn:hover {
+  background-color: #f1f1f1;
+}
+.accordion-content {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+  transition: all 0.4s;
+}
+.accordion-btn.active + .accordion-content {
+  display: block;
+}

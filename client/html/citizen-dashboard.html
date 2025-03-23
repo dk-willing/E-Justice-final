@@ -9,10 +9,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
@@ -47,7 +51,7 @@
         </div>
 
         <nav class="sidebar-nav">
-          <a href="#" class="nav-item active">
+          <a href="../../home.html" class="nav-item active">
             <i class="fas fa-home"></i>
             <span>Home</span>
           </a>
@@ -55,7 +59,7 @@
             <i class="fas fa-folder"></i>
             <span>My Cases</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="#" class="nav-item" id="openSearch">
             <i class="fas fa-search"></i>
             <span>Search Lawyers</span>
           </a>
@@ -63,7 +67,7 @@
             <i class="fas fa-book"></i>
             <span>Legal Resources</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="#" class="nav-item" onclick="openModal()">
             <i class="fas fa-question-circle"></i>
             <span>Support & FAQs</span>
           </a>
@@ -116,7 +120,9 @@
             current cases and upcoming appointments.
           </p>
           <div class="action-buttons">
-            <button class="btn primary">Book Consultation</button>
+            <button class="btn primary" id="openModalBtn">
+              Book Consultation
+            </button>
             <button class="btn secondary">View all cases</button>
             <button class="btn emergency">Emergency Legal Help</button>
           </div>
@@ -293,7 +299,9 @@
                 </div>
               </div>
             </div>
-            <button class="btn outline full-width">Book an Appointment</button>
+            <button class="btn outline full-width" id="openModalBtn">
+              Book an Appointment
+            </button>
           </div>
 
           <!-- Legal Updates Section -->
@@ -364,6 +372,118 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div id="consultationModal" class="popup" style="display: none">
+      <div class="popup-box">
+        <!-- Close Button -->
+        <span id="closeModalBtn" class="close-btn">&times;</span>
+
+        <!-- Modal Form -->
+        <h2>Book a Consultation</h2>
+        <form id="bookingForm" class="form-container">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+            required
+            class="form-input"
+          />
+
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Your Email"
+            required
+            class="form-input"
+          />
+
+          <label for="date" class="form-label">Date</label>
+          <input type="date" id="date" required class="form-input" />
+
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            id="message"
+            placeholder="Your Message"
+            class="form-textarea"
+          ></textarea>
+
+          <button type="submit" class="action-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="search-modal">
+      <div class="search-box">
+        <span class="close-search" id="closeSearch">&times;</span>
+        <h2>Search</h2>
+        <div class="input-box">
+          <input type="text" class="search-input" placeholder="Type here..." />
+          <button class="search-action-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="faq-modal" class="faq-modal">
+      <div class="faq-modal-content">
+        <span class="faq-close" onclick="closeModal()">&times;</span>
+        <h2>FAQ & Support</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              How can I check my case status?
+            </button>
+            <div class="accordion-content">
+              <p>You can check your case status in the Active Cases section.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">How do I contact my lawyer?</button>
+            <div class="accordion-content">
+              <p>Click on the chat icon next to your assigned lawyer.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">Need further assistance?</button>
+            <div class="accordion-content">
+              <p>Contact our support team at support@example.com.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="../javaScript/citizen-dashboard.js"></script>
+    <script>
+      function openModal() {
+        document.getElementById("faq-modal").style.display = "flex";
+      }
+      function closeModal() {
+        document.getElementById("faq-modal").style.display = "none";
+      }
+      window.onclick = function (event) {
+        if (event.target === document.getElementById("faq-modal")) {
+          closeModal();
+        }
+      };
+
+      document.querySelectorAll(".accordion-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -282,6 +282,8 @@ header {
   margin-top: 30px;
   align-items: center;
   flex-wrap: wrap;
+
+  transition: all 0.4s;
 }
 
 .description {
@@ -299,6 +301,7 @@ header {
   transition: background-color 0.3s ease;
   text-align: center;
   max-width: 250px;
+  transition: all 0.4s;
 }
 .button-container :first-child {
   color: rgba(232, 173, 47, 0.93);

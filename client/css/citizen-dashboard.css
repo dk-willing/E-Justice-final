@@ -20,14 +20,14 @@
 }
 
 body {
-  font-family: 'Lexend', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
 }
 
 .dash.lawyer {
-  padding: 1.5rem 1rem;
+  /* padding: 1.5rem 1rem; */
   border-bottom: 1px solid var(--gray-200);
   border-top: 5px solid var(--gray-200);
   margin-top: auto;
@@ -39,43 +39,40 @@ body {
   gap: 10px;
 }
 
-.lawyer.abt .profile-img {
-  flex-shrink: 0;
-}
-
-.lawyer.abt h1 {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--gray-800);
-  display: block;
-  margin-bottom: 3px;
-}
-
-.lawyer.abt p {
-  font-size: 12px;
-  color: var(--gray-500);
-}
-
 .user-profile {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  /* justify-content: space-between; */
   gap: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1.5rem;
 }
 
 .profile-img {
-  width: 100%;
+  width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: var(--gray-200);
+  margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 .profile-img img {
+  flex-shrink: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+}
+
+.user-profile h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.user-type {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
 .dashboard-container {
@@ -83,14 +80,14 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar Styles */
+/* Sidebar styles */
 .sidebar {
-  width: 260px;
-  background-color: var(--card-color);
+  width: 240px;
+  background-color: white;
   box-shadow: var(--shadow);
-  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  padding: 1.5rem 1rem;
   position: fixed;
   height: 100vh;
   overflow-y: auto;
@@ -106,122 +103,106 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;
   margin-right: 10px;
 }
 
 .logo span {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .highlight {
   color: var(--primary-color);
 }
 
-/* .user-profile {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+.user-profile {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  gap: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1.5rem;
 }
-  */
 
 .profile-img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 1rem;
-  border: 3px solid var(--primary-color);
+  margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 .profile-img img {
+  flex-shrink: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .user-profile h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 0.3rem;
 }
 
 .user-type {
-  font-size: 0.9rem;
-  color: #777;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  margin-bottom: auto;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--border-radius);
   margin-bottom: 0.5rem;
-  border-radius: 8px;
-  color: var(--secondary-color);
+  color: #64748b;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
 }
 
 .nav-item i {
-  margin-right: 1rem;
-  font-size: 1.2rem;
+  margin-right: 0.7rem;
+  font-size: 1rem;
 }
 
-.nav-item.active {
-  background-color: #f0f4ff;
-  color: var(--accent-color);
-  font-weight: 500;
-}
-
-/* Green home button */
-.sidebar-nav a.nav-item:first-child {
-  background-color: #20af61;
-  color: white;
-}
-
-.sidebar-nav a.nav-item:first-child:hover {
-  background-color: #1c9954;
-}
-
-.nav-item:hover {
-  background-color: #eeeeee;
-}
-
-/* Special Nav Icons */
 .nav-item-special {
-  margin-top: auto;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0.5rem;
-  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
 }
 
 .nav-icon {
-  width: 36px;
-  height: 36px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  background-color: #f1f5f9;
+  color: #64748b;
   cursor: pointer;
-}
-
-.nav-icon i {
-  font-size: 14px;
-  color: var(--secondary-color);
+  transition: var(--transition);
 }
 
 .nav-icon:hover {
-  background-color: #eeeeee;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 /* Main Content Styles */
@@ -934,3 +915,323 @@ body.dark-mode .ai-assistant-card {
 .action-btn.assign:hover {
   background-color: #c3e6cb;
 } */
+
+.primary-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.primary-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Popup Modal */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Modal Box */
+.popup-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Icon */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* Form Container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Action Button */
+.action-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.action-btn:hover {
+  background-color: #218838;
+}
+
+/* Search Modal */
+.search-btn {
+  background-color: #007bff;
+  backdrop-filter: blur(2px);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Background */
+.search-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.635);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content */
+.search-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 450px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Close Button */
+.close-search {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-search:hover {
+  color: red;
+}
+
+/* Search Input */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Search Action Button */
+.search-action-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-action-btn:hover {
+  background-color: #218838;
+}
+
+.faq-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.712);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+}
+.faq-modal-content {
+  background-color: white;
+  backdrop-filter: blur(2px);
+  padding: 40px;
+  border-radius: 10px;
+  width: 500px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.faq-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.faq-close:hover {
+  color: red;
+}
+
+/* Accordion Styling */
+.accordion {
+  margin-top: 20px;
+}
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+  transition: all 0.4s;
+}
+.accordion-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.accordion-btn:hover {
+  background-color: #f1f1f1;
+}
+.accordion-content {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+  transition: all 0.4s;
+}
+.accordion-btn.active + .accordion-content {
+  display: block;
+}
+
+.modal-case {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.modal-case-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.modal-case-content label {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.close-case {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.close-case:hover {
+  color: red;
+}
+.case-input,
+.case-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.case-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.case-submit-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
+}
+.case-submit-btn:hover {
+  background-color: #218838;
+}
+.case-confirmation {
+  margin-top: 15px;
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}

@@ -38,14 +38,13 @@
         </div>
 
         <div class="dash lawyer">
-          <div class="lawyer abt">
+          <div class="user-profile">
             <div class="profile-img">
-              <img src="../images/harvey.jpeg" alt="Harvey Spectre" />
+              <img src="../images/gard.jpeg" alt="User Profile" />
             </div>
-
             <div>
-              <h1>Obed Ayer</h1>
-              <p>Citizen</p>
+              <h3>Obed Ayer</h3>
+              <p class="user-type">Citizen</p>
             </div>
           </div>
         </div>
@@ -63,7 +62,7 @@
             <i class="fas fa-search"></i>
             <span>Search Lawyers</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="../html/legal re.html" class="nav-item">
             <i class="fas fa-book"></i>
             <span>Legal Resources</span>
           </a>
@@ -480,7 +479,7 @@
           <button type="submit" class="case-submit-btn">Submit</button>
         </form>
         <div id="case-confirmation" class="case-confirmation hidden">
-          <p>Your case is being reviewed. You will receive updates soon.</p>
+          <p>Your case is being reviewed. You will receive updates shortly.</p>
         </div>
       </div>
     </div>
@@ -535,6 +534,12 @@
           document.getElementById("case-form").style.display = "none";
           document.getElementById("case-confirmation").style.display = "block";
         });
+
+      window.onclick = function (event) {
+        if (event.target === document.getElementById("case-modal")) {
+          closeCaseModal();
+        }
+      };
     </script>
   </body>
 </html>

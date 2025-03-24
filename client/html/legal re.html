@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal Resources - E-Justice Ghana</title>
+    <link rel="stylesheet" href="../css/legal re.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">
+          <img src="../images/e-justice logo.jpg" alt="E-Justice Ghana logo" />
+          <span>E-Justice <span class="highlight">Ghana</span></span>
+        </div>
+
+        <div class="user-profile">
+          <div class="profile-img">
+            <img src="../images/gard.jpeg" alt="User Profile" />
+          </div>
+          <div>
+            <h3>Obed Ayer</h3>
+            <p class="user-type">Citizen</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="../html/citizen-dashboard.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>My Cases</span>
+          </a>
+          <a href="#" class="nav-item" id="openSearch">
+            <i class="fas fa-search"></i>
+            <span>Search Lawyers</span>
+          </a>
+          <a href="../html/legal re.html" class="nav-item active">
+            <i class="fas fa-book"></i>
+            <span>Legal Resources</span>
+          </a>
+          <a href="#" class="nav-item" onclick="openModal()">
+            <i class="fas fa-question-circle"></i>
+            <span>Support & FAQs</span>
+          </a>
+        </nav>
+
+        <!-- Special Nav Icons -->
+        <div class="nav-item-special">
+          <div
+            class="nav-icon dark-mode-toggle"
+            style="cursor: pointer"
+            onclick="document.body.classList.toggle('dark-mode'); 
+                              const icon = document.querySelector('#darkModeIcon'); 
+                              if(document.body.classList.contains('dark-mode')) { 
+                                  icon.className = 'fas fa-sun'; 
+                                  localStorage.setItem('darkMode', 'enabled'); 
+                              } else { 
+                                  icon.className = 'fas fa-moon'; 
+                                  localStorage.setItem('darkMode', 'disabled'); 
+                              }"
+          >
+            <i class="fas fa-moon" id="darkModeIcon"></i>
+          </div>
+          <div class="nav-icon">
+            <i class="fas fa-gear"></i>
+          </div>
+          <div class="nav-icon">
+            <i class="fas fa-arrow-right-from-bracket"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+          <div class="header-title">
+            <h1>Legal Resources</h1>
+          </div>
+          <div class="user-profile-small">
+            <img src="../images/e-justice logo.jpg" alt="User profile" />
+          </div>
+        </div>
+
+        <!-- Page intro -->
+        <div class="intro-section">
+          <h2>Access Legal Knowledge</h2>
+          <p>
+            Explore our comprehensive collection of legal resources to help you
+            understand Ghanaian law and your rights.
+          </p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search for legal topics, documents..."
+            />
+            <button class="search-btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+
+          <div class="categories">
+            <div class="category-filter active" data-category="all">All</div>
+            <div class="category-filter" data-category="family">Family Law</div>
+            <div class="category-filter" data-category="property">Property</div>
+            <div class="category-filter" data-category="employment">
+              Employment
+            </div>
+            <div class="category-filter" data-category="criminal">Criminal</div>
+            <div class="category-filter" data-category="immigration">
+              Immigration
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Resources -->
+        <div class="resource-section">
+          <h3 class="section-title">Featured Resources</h3>
+          <div class="resource-grid">
+            <div class="resource-card" data-category="property">
+              <div class="icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <h4>Property Law Guide</h4>
+              <p>
+                A comprehensive guide to property law in Ghana, including land
+                ownership, transfers, and disputes.
+              </p>
+              <div class="tags">
+                <span class="tag">Property</span>
+                <span class="tag">Land Rights</span>
+              </div>
+              <a
+                href="https://generisonline.com/understanding-property-ownership-rights-in-ghana/"
+                target="_blank"
+                class="action-btn"
+                >View Guide</a
+              >
+            </div>
+
+            <div class="resource-card" data-category="business">
+              <div class="icon">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <h4>Contract Templates</h4>
+              <p>
+                Ready-to-use contract templates with guidance on customization
+                for various legal scenarios.
+              </p>
+              <div class="tags">
+                <span class="tag">Contracts</span>
+                <span class="tag">Templates</span>
+              </div>
+              <a
+                href="https://www.templateroller.com/tags/78595-ghana-legal-forms/"
+                target="_blank"
+                class="action-btn"
+                >Download</a
+              >
+            </div>
+
+            <div class="resource-card" data-category="family">
+              <div class="icon">
+                <i class="fas fa-child"></i>
+              </div>
+              <h4>Family Law Handbook</h4>
+              <p>
+                Essential information on divorce, child custody, maintenance,
+                and other family legal matters.
+              </p>
+              <div class="tags">
+                <span class="tag">Family</span>
+                <span class="tag">Children</span>
+              </div>
+              <a
+                href="https://bpaghana.com/wp-content/uploads/2024/01/Family-Law-in-Ghana-Overview.pdf"
+                target="_blank"
+                class="action-btn"
+                >Read Now</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Legal Documents -->
+        <div class="resource-section">
+          <h3 class="section-title">Legal Documents</h3>
+          <div class="resource-grid">
+            <div class="resource-card" data-category="constitutional">
+              <div class="icon">
+                <i class="fas fa-gavel"></i>
+              </div>
+              <h4>Constitution of Ghana</h4>
+              <p>
+                The full text of the Constitution of Ghana with annotations and
+                explanations.
+              </p>
+              <div class="tags">
+                <span class="tag">Constitutional</span>
+                <span class="tag">Government</span>
+              </div>
+              <a
+                href="https://judicial.gov.gh/index.php/the-laws-of-ghana"
+                target="_blank"
+                class="action-btn"
+                >View Document</a
+              >
+            </div>
+
+            <div class="resource-card" data-category="criminal">
+              <div class="icon">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <h4>Criminal Procedure Code</h4>
+              <p>
+                A detailed guide to criminal procedures, rights of the accused,
+                and court processes.
+              </p>
+              <div class="tags">
+                <span class="tag">Criminal</span>
+                <span class="tag">Procedure</span>
+              </div>
+              <a
+                href="https://gis.gov.gh/wp-content/uploads/2024/02/criminal-procedure-code.pdf"
+                target="_blank"
+                class="action-btn"
+                >Read Online</a
+              >
+            </div>
+
+            <div class="resource-card" data-category="employment">
+              <div class="icon">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <h4>Employment Act</h4>
+              <p>
+                Key provisions of Ghana's employment laws, including rights and
+                responsibilities.
+              </p>
+              <div class="tags">
+                <span class="tag">Labor</span>
+                <span class="tag">Employment</span>
+              </div>
+              <a
+                href="https://www.gipc.gov.gh/wp-content/uploads/2023/05/LABOUR-ACT-2003-ACT-651.pdf"
+                target="_blank"
+                class="action-btn"
+                >Download PDF</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Educational Resources -->
+        <div class="resource-section">
+          <h3 class="section-title">Educational Resources</h3>
+          <div class="resource-grid">
+            <div class="resource-card" data-category="education">
+              <div class="icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <h4>Video Tutorials</h4>
+              <p>
+                Easy-to-understand video explanations of common legal concepts
+                and procedures.
+              </p>
+              <div class="tags">
+                <span class="tag">Videos</span>
+                <span class="tag">Tutorials</span>
+              </div>
+              <div class="video-links">
+                <a
+                  href="https://www.youtube.com/watch?v=sYVQUmjD-_I"
+                  target="_blank"
+                  class="action-btn video-btn"
+                >
+                  <i class="fab fa-youtube"></i> Basic Legal Rights
+                </a>
+                <a
+                  href="https://www.youtube.com/watch?v=5-baFmaNboA"
+                  target="_blank"
+                  class="action-btn video-btn"
+                >
+                  <i class="fab fa-youtube"></i> Property Law Basics
+                </a>
+                <a
+                  href="https://www.youtube.com/watch?v=1viSIpPu2KA"
+                  target="_blank"
+                  class="action-btn video-btn"
+                >
+                  <i class="fab fa-youtube"></i> Court Procedures
+                </a>
+                <a
+                  href="https://www.youtube.com/watch?v=K9-E2peDqbE"
+                  target="_blank"
+                  class="action-btn video-btn"
+                >
+                  <i class="fab fa-youtube"></i> Family Law Overview
+                </a>
+              </div>
+            </div>
+
+            <div class="resource-card" data-category="education">
+              <div class="icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <h4>Legal Research Guide</h4>
+              <p>
+                Learn how to conduct effective legal research using online and
+                offline resources.
+              </p>
+              <div class="tags">
+                <span class="tag">Research</span>
+                <span class="tag">Guide</span>
+              </div>
+              <a
+                href="https://guides.loc.gov/law-ghana"
+                target="_blank"
+                class="action-btn"
+                >Read Guide</a
+              >
+            </div>
+
+            <div class="resource-card" data-category="faqs">
+              <div class="icon">
+                <i class="fas fa-question-circle"></i>
+              </div>
+              <h4>FAQ Library</h4>
+              <p>
+                Answers to frequently asked legal questions across various
+                practice areas.
+              </p>
+              <div class="tags">
+                <span class="tag">FAQs</span>
+                <span class="tag">Q&A</span>
+              </div>
+              <button class="action-btn">Browse FAQs</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="faq-modal" class="faq-modal" style="display: none">
+      <div class="faq-modal-content">
+        <span class="faq-close" onclick="closeModal()">&times;</span>
+        <h2>FAQ & Support</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              How can I check my case status?
+            </button>
+            <div class="accordion-content">
+              <p>You can check your case status in the Active Cases section.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">How do I contact my lawyer?</button>
+            <div class="accordion-content">
+              <p>Click on the chat icon next to your assigned lawyer.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">Need further assistance?</button>
+            <div class="accordion-content">
+              <p>Contact our support team at support@example.com.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="searchModal" class="search-modal">
+      <div class="search-box">
+        <span class="close-search" id="closeSearch">&times;</span>
+        <h2>Search</h2>
+        <div class="input-box">
+          <input type="text" class="search-input" placeholder="Type here..." />
+          <button class="search-action-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../javaScript/legal.js"></script>
+
+    <script>
+      function openModal() {
+        document.getElementById("faq-modal").style.display = "flex";
+      }
+      function closeModal() {
+        document.getElementById("faq-modal").style.display = "none";
+      }
+      window.onclick = function (event) {
+        if (event.target === document.getElementById("faq-modal")) {
+          closeModal();
+        }
+      };
+
+      document.querySelectorAll(".accordion-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

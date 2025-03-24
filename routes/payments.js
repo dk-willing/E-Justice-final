@@ -1,91 +1,89 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const authMiddleware = require('../middleware/auth');
 const Payment = require('../models/Payment');
 
-const PAYSTACK_API_BASE_URL = 'https://api.paystack.co';
+const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
+const PAYSTACK_BASE_URL = 'https://api.paystack.co';
 
-// Initialize a payment transaction
-router.post('/initialize', authMiddleware, async (req, res) => {
+// Create a Payment Page and Redirect (No authentication required)
+router.post('/create-payment-page', async (req, res) => {
   try {
-    const userId = req.user;
-    const { amount, email, metadata } = req.body;
+    const { metadata } = req.body;
 
-    // Validate input
-    if (!amount || !email) {
-      return res.status(400).json({ message: 'Please enter Amount and Email' });
-    }
-    // Make a direct API call to Paystack to initialize the transaction
-    const amountInPesewas = amount * 100;
-    const response = await axios.post(
-      `${PAYSTACK_API_BASE_URL}/transaction/initialize`,
+    // Create a Payment Page using Paystack API
+    const paystackResponse = await axios.post(
+      `${PAYSTACK_BASE_URL}/page`,
       {
-        email,
-        amount: amountInPesewas,
+        name: 'Donation Payment Page',
+        description: 'Donate to support our cause',
+        amount: null, // Set to null to allow users to enter their own amount
         currency: 'GHS',
-        callback_url: 'http://localhost:5000/api/payments/verify', // Callback URL after payment
-        channels: ['card', 'mobile_money'], // Enable card and mobile money for Ghana
-        metadata: metadata || { userId }, // Optional metadata
+        redirect_url: 'http://localhost:5000/api/payments/verify', // Callback URL after payment
+        metadata: metadata || {},
       },
       {
         headers: {
-          Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
+          Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
           'Content-Type': 'application/json',
         },
       }
     );
 
-    // Check if the request was successful
-    if (!response.data.status) {
+    if (!paystackResponse.data.status) {
       throw new Error(
-        response.data.message || 'Failed to initialize transaction'
+        paystackResponse.data.message || 'Failed to create payment page'
       );
     }
 
-    res.json({
-      message: 'Payment initialized successfully',
-      authorization_url: response.data.data.authorization_url,
-      reference: response.data.data.reference,
+    const paymentPageUrl = `https://paystack.com/pay/${paystackResponse.data.data.slug}`;
+
+    res.status(200).json({
+      message: 'Payment page created successfully',
+      payment_page_url: paymentPageUrl,
     });
   } catch (error) {
-    console.error('Error initializing payment:', error);
-    console.error('Error details:', {
-      message: error.message,
-      response: error.response ? error.response.data : null,
-      status: error.response ? error.response.status : null,
-    });
+    console.error(
+      'Error creating payment page:',
+      error.response?.data || error.message
+    );
     res.status(500).json({
-      message: 'Server error',
+      message: 'Error creating payment page',
       error: error.message,
       details: error.response ? error.response.data : null,
     });
   }
 });
 
-// Verify a payment transaction
+// Verify Payment
 router.get('/verify', async (req, res) => {
   try {
     const { reference } = req.query;
 
     if (!reference) {
-      return res
-        .status(400)
-        .json({ message: 'Transaction reference is required' });
+      return res.status(400).json({ message: 'Reference is required' });
     }
 
-    // Making a direct API call to Paystack to verify the transaction
+    // Check if the payment with this reference already exists
+    const existingPayment = await Payment.findOne({ reference });
+    if (existingPayment) {
+      // If the payment already exists, return its details
+      return res.status(200).json({
+        message: 'Payment already verified',
+        paymentDetails: existingPayment,
+      });
+    }
+
+    // Verify the transaction with Paystack
     const response = await axios.get(
-      `${PAYSTACK_API_BASE_URL}/transaction/verify/${reference}`,
+      `${PAYSTACK_BASE_URL}/transaction/verify/${reference}`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
+          Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
           'Content-Type': 'application/json',
         },
       }
     );
-
-    console.log('Paystack Verify API Response:', response.data);
 
     if (!response.data.status) {
       throw new Error(response.data.message || 'Failed to verify transaction');
@@ -100,30 +98,31 @@ router.get('/verify', async (req, res) => {
       });
     }
 
-    // Payment is successful
+    // Payment is successful, save to database
     const paymentDetails = {
-      userId: transaction.metadata.userId,
+      userId: transaction.metadata.userId || null, // Optional userId from metadata
       amount: transaction.amount / 100, // Convert back to GHS
-      currency: transaction.currency, // Should be GHS
+      currency: transaction.currency,
       reference: transaction.reference,
       status: transaction.status,
       paidAt: transaction.paid_at,
+      email: transaction.customer.email, // Get the email the user provided to Paystack
     };
 
-    // Save to database
     const payment = new Payment(paymentDetails);
     await payment.save();
 
-    res.json({ message: 'Payment verified successfully', paymentDetails });
+    // Return JSON response instead of redirecting
+    res
+      .status(200)
+      .json({ message: 'Payment verified successfully', paymentDetails });
   } catch (error) {
-    console.error('Error verifying payment:', error);
-    console.error('Error details:', {
-      message: error.message,
-      response: error.response ? error.response.data : null,
-      status: error.response ? error.response.status : null,
-    });
+    console.error(
+      'Error verifying payment:',
+      error.response?.data || error.message
+    );
     res.status(500).json({
-      message: 'Server error',
+      message: 'Error verifying payment',
       error: error.message,
       details: error.response ? error.response.data : null,
     });

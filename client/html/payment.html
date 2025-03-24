@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Form</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+      .payment-container {
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 400px;
+        margin: auto;
+      }
+      .tab {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+      }
+      .tab.active {
+        background-color: #007bff;
+        color: white;
+      }
+      .payment-form {
+        margin-top: 20px;
+      }
+      .input-container {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .input-container span {
+        padding: 8px;
+        color: #666;
+      }
+      .input-container input,
+      .input-container select {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 0 5px 5px 0;
+      }
+      .side-by-side {
+        display: flex;
+        justify-content: space-between;
+      }
+      .side-by-side .input-container {
+        width: 48%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="payment-container">
+      <div class="tab active" onclick="showForm('card')">Card</div>
+      <div class="tab" onclick="showForm ('mobile')">Mobile Money</div>
+
+      <div id="card-form" class="payment-form">
+        <div class="input-container">
+          <span class="material-symbols-outlined">credit_card</span>
+          <input type="text" placeholder="Card Number" />
+        </div>
+        <div class="input-container">
+          <span class="material-symbols-outlined">event</span>
+          <input type="text" placeholder="Expiry (MM/YY)" />
+        </div>
+        <div class="input-container">
+          <span class="material-symbols-outlined">lock</span>
+          <input type="text" placeholder="CVC" />
+        </div>
+        <div class="side-by-side">
+          <div class="input-container">
+            <select>
+              <option>Select Country</option>
+              <option>United States</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+            </select>
+          </div>
+          <div class="input-container">
+            <input type="text" placeholder="Postal Code" />
+          </div>
+        </div>
+      </div>
+
+      <div id="mobile-form" class="payment-form" style="display: none">
+        <div class="input-container">
+          <span class="material-symbols-outlined">phone</span>
+          <input type="text" placeholder="Mobile Number" />
+        </div>
+        <div class="side-by-side">
+          <div class="input-container">
+            <select>
+              <option>Your Network</option>
+              <option>MTN</option>
+              <option>AirtelTigo</option>
+              <option>Telecel</option>
+            </select>
+          </div>
+          <div class="input-container">
+            <input type="text" placeholder="OTP Received" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function showForm(form) {
+        const cardForm = document.getElementById('card-form');
+        const mobileForm = document.getElementById('mobile-form');
+        const tabs = document.querySelectorAll('.tab');
+
+        tabs.forEach((tab) => tab.classList.remove('active'));
+        if (form === 'card') {
+          cardForm.style.display = 'block';
+          mobileForm.style.display = 'none';
+          tabs[0].classList.add('active');
+        } else {
+          cardForm.style.display = 'none';
+          mobileForm.style.display = 'block';
+          tabs[1].classList.add('active');
+        }
+      }
+    </script>
+  </body>
+</html>

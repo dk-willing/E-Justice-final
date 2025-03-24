@@ -24,6 +24,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <script src="../javaScript/services.js" defer></script>
   </head>
   <body>
     <section>
@@ -38,33 +40,22 @@
           </div>
           <ul class="nav-links">
             <li>
-              <a href="../html/home.html"
-                ><span class="material-symbols-outlined">home</span>Home</a
-              >
+              <a href="../../home.html">Home</a>
             </li>
-            <li class="dropdown">
+            <li>
               <a href="../html/services.html">Services</a>
-              <ul class="dropdown-menu">
-                <li><a href="#crime">Crime</a></li>
-                <li><a href="#politics">Politics</a></li>
-                <li><a href="#finance">Finance</a></li>
-                <li><a href="#civil">Civil</a></li>
-                <li><a href="#foreign">Foreign</a></li>
-              </ul>
             </li>
             <li>
-              <a href="../awareness/index.html"
-                ><span class="material-symbols-outlined">article</span>Blog</a
-              >
+              <a href="../html/awareness.html">Blog</a>
             </li>
-            <li>
+            <li id="contactUs">
               <a href="#contact" class="contact"
                 ><span class="material-symbols-outlined">contact_mail</span
                 >Contact</a
               >
             </li>
             <li>
-              <a href="../authentication/index.html" class="login"
+              <a href="../html/auth.html" class="login"
                 ><span class="material-symbols-outlined">account_circle</span
                 >Login</a
               >
@@ -155,6 +146,7 @@
             <!----card 2-->
             <div class="feature-card">
               <img src="../img/ken.png" alt="Ken Ofori Atta " />
+
               <a href="criminal-law.html" class="criminal">criminal law</a>
               <h3 class="criminal-title">OSP Declares Ken Ofori Atta Wanted</h3>
               <p>
@@ -166,6 +158,7 @@
             <!----card 3-->
             <div class="feature-card">
               <img src="../img/killings.png" alt="Killers" />
+
               <a href="criminal-law.html" class="criminal">criminal law</a>
               <h3 class="criminal-title">
                 Two Jailed over Killing of 9 year old teenager
@@ -187,20 +180,26 @@
             <!----card 1-->
             <div class="feature-card2">
               <img src="../img/laryea.png" alt="Mr Laryea" />
-              <h3 class="expert-title">Mr. Timothy Laryea</h3>
-              <a href="laryea.html">Watch Profile</a>
+              <div class="feature-card-body">
+                <h3 class="expert-title">Mr. Timothy Laryea</h3>
+                <a href="laryea.html">Watch Profile</a>
+              </div>
             </div>
             <!----card 2-->
             <div class="feature-card2">
               <img src="../img/listowel.png" alt="Mr Listowel" />
-              <h3 class="expert-title">Esq. Listowel Bomah</h3>
-              <a href="listowel.html">Watch Profile</a>
+              <div class="feature-card-body">
+                <h3 class="expert-title">Esq. Listowel Bomah</h3>
+                <a href="listowel.html">Watch Profile</a>
+              </div>
             </div>
             <!----card 3-->
             <div class="feature-card2">
               <img src="../img/frank.png" alt="Mr Frank" />
-              <h3 class="expert-title">Esq. Frank Nartey</h3>
-              <a href="frank.html">Watch Profile</a>
+              <div class="feature-card-body">
+                <h3 class="expert-title">Esq. Frank Nartey</h3>
+                <a href="frank.html">Watch Profile</a>
+              </div>
             </div>
           </div>
         </div>
@@ -299,6 +298,25 @@
         </div>
       </footer>
     </section>
-    <script src="../javaScript/services.js"></script>
+
+    <!-- Modal -->
+    <div id="contactModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contact Us</h2>
+        <form>
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your Name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Your Email" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Your Message" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

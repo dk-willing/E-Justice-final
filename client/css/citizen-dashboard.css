@@ -80,14 +80,14 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar Styles */
+/* Sidebar styles */
 .sidebar {
-  width: 260px;
-  background-color: var(--card-color);
+  width: 240px;
+  background-color: white;
   box-shadow: var(--shadow);
-  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
+  padding: 1.5rem 1rem;
   position: fixed;
   height: 100vh;
   overflow-y: auto;
@@ -103,112 +103,106 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;
   margin-right: 10px;
 }
 
 .logo span {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .highlight {
   color: var(--primary-color);
 }
 
-/* .user-profile {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+.user-profile {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  gap: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1.5rem;
 }
-  */
 
 .profile-img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 1rem;
-  border: 3px solid var(--primary-color);
+  margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 .profile-img img {
+  flex-shrink: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .user-profile h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 0.3rem;
 }
 
 .user-type {
-  font-size: 0.9rem;
-  color: #777;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  margin-bottom: auto;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--border-radius);
   margin-bottom: 0.5rem;
-  border-radius: 8px;
-  color: var(--secondary-color);
+  color: #64748b;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
 }
 
 .nav-item i {
-  margin-right: 1rem;
-  font-size: 1.2rem;
+  margin-right: 0.7rem;
+  font-size: 1rem;
 }
 
-.nav-item.active {
-  background-color: #f0f4ff;
-  /* color: var(--accent-color); */
-  font-weight: 500;
-}
-
-.nav-item:hover {
-  background-color: #eeeeee;
-}
-
-/* Special Nav Icons */
 .nav-item-special {
-  margin-top: auto;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0.5rem;
-  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
 }
 
 .nav-icon {
-  width: 36px;
-  height: 36px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  background-color: #f1f5f9;
+  color: #64748b;
   cursor: pointer;
-}
-
-.nav-icon i {
-  font-size: 14px;
-  color: var(--secondary-color);
+  transition: var(--transition);
 }
 
 .nav-icon:hover {
-  background-color: #eeeeee;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 /* Main Content Styles */

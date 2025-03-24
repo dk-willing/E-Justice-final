@@ -121,19 +121,19 @@
     </div>
     <script>
       function showForm(form) {
-        const cardForm = document.getElementById("card-form");
-        const mobileForm = document.getElementById("mobile-form");
-        const tabs = document.querySelectorAll(".tab");
+        const cardForm = document.getElementById('card-form');
+        const mobileForm = document.getElementById('mobile-form');
+        const tabs = document.querySelectorAll('.tab');
 
-        tabs.forEach((tab) => tab.classList.remove("active"));
-        if (form === "card") {
-          cardForm.style.display = "block";
-          mobileForm.style.display = "none";
-          tabs[0].classList.add("active");
+        tabs.forEach((tab) => tab.classList.remove('active'));
+        if (form === 'card') {
+          cardForm.style.display = 'block';
+          mobileForm.style.display = 'none';
+          tabs[0].classList.add('active');
         } else {
-          cardForm.style.display = "none";
-          mobileForm.style.display = "block";
-          tabs[1].classList.add("active");
+          cardForm.style.display = 'none';
+          mobileForm.style.display = 'block';
+          tabs[1].classList.add('active');
         }
       }
     </script>

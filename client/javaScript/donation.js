@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Payment Integration with Backend API
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'https://e-justice-02-2.onrender.com/api';
 
 async function createPaymentPage() {
   try {

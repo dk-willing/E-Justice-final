@@ -474,7 +474,7 @@ body {
 .ai-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 95%;
 }
 
 .ai-intro {
@@ -1234,4 +1234,243 @@ body.dark-mode .ai-assistant-card {
   padding: 10px;
   border-radius: 5px;
   display: none;
+}
+
+/* AI SECTION */
+/* Chat Container */
+.chat-container {
+  width: 350px;
+  max-width: 100%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  margin-top: auto;
+}
+
+/* Header */
+.chat-header {
+  background: #20af61;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.avatar {
+  background: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-icon {
+  font-size: 24px;
+  color: black;
+}
+
+/* Chat Body */
+.chat-body {
+  padding: 10px;
+  height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #f9f9f9;
+}
+
+/* User Message */
+.chat-message {
+  align-self: flex-end;
+  background: #20af61;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 75%;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.chat-message p {
+  font-size: 0.7rem;
+}
+
+/* Typing Indicator */
+.chat-typing {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 3px;
+  padding: 5px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.typing-indicator span {
+  width: 5px;
+  height: 5px;
+  background: #bbb;
+  border-radius: 50%;
+  animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Footer */
+.chat-footer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: white;
+}
+
+.chat-footer input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.send-icon {
+  color: #1e90ff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.footer-icons svg {
+  font-size: 16px;
+  color: gray;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .chat-container {
+    width: 100%;
+  }
+
+  .chat-message {
+    max-width: 90%;
+  }
+
+  .chat-footer input {
+    font-size: 12px;
+  }
+
+  .send-icon {
+    font-size: 16px;
+  }
+}
+
+/* Header Avatar */
+.avatar {
+  background: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Chat Messages */
+.chat-message {
+  align-self: flex-start;
+  background: #ddd;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #20af61;
+  color: white;
+}
+
+/* Send Button */
+.send-icon {
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: gray;
+}
+
+.send-icon.active {
+  color: green;
+  cursor: pointer;
+}
+
+.send-icon.disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+
+/* Chat Body - Scrollable */
+.chat-body {
+  padding: 10px;
+  height: 300px; /* Set height for scrollability */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #f9f9f9;
+  scrollbar-width: thin; /* For Firefox */
+}
+
+/* Optional scrollbar styling */
+.chat-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }

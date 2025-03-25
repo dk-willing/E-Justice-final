@@ -24,7 +24,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 90%;
-  max-width: 800px;
+  margin: 0 auto;
+  max-width: 900px;
   height: 100vh;
 }
 .auth-box {
@@ -33,6 +34,9 @@ body {
   width: 100%;
   display: flex;
   margin-top: 100px;
+
+  justify-content: center;
+  /* align-items: center; */
 
   transition: all 0.4s;
 }

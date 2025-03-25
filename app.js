@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const authRoutes = require('./routes/auth');
 const caseRoutes = require('./routes/cases');
 const messageRoutes = require('./routes/messages');
@@ -9,6 +10,7 @@ const cors = require('cors');
 const app = express();
 //cors
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

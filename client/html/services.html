@@ -249,7 +249,13 @@
             </div>
           </div>
           <div class="form-container">
-            <form class="minimal-form" netlify id="community">
+            <form
+              class="minimal-form"
+              netlify
+              id="community"
+              method="POST"
+              data-netlify="true"
+            >
               <input type="text" placeholder="Name" />
               <input type="email" placeholder="Email" />
               <button type="submit">Join Now</button>
@@ -304,7 +310,7 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Contact Us</h2>
-        <form netlify id="Message">
+        <form netlify id="message" method="POST" data-netlify="true">
           <label for="name" id="sender-name">Name</label>
           <input type="text" id="name" placeholder="Your Name" required />
 

@@ -8,11 +8,6 @@ const db = process.env.DATABSE_CONNECTION_STRING.replace(
   process.env.DATABSE_PASSWARD
 );
 
-// const db = process.env.DATABASE_CONNECTION_STRING.replace(
-//   "<db_password>",
-//   process.env.DATABASE_PASSWORD
-// );
-
 // MongoDB Connection
 mongoose
   .connect(db, {

@@ -48,7 +48,7 @@
         </div>
 
         <nav class="sidebar-nav">
-          <a href="../../home.html" class="nav-item">
+          <a href="../../index.html" class="nav-item">
             <i class="fas fa-home"></i>
             <span>Home</span>
           </a>
@@ -252,11 +252,33 @@
                   <span>Your rights</span>
                 </button>
               </div>
-              <div class="ai-input">
-                <input type="text" placeholder="Type your question..." />
-                <button class="send-btn">
-                  <i class="fas fa-paper-plane"></i>
-                </button>
+              <div class="chat-container">
+                <div class="chat-header">
+                  <div class="avatar">
+                    <img
+                      src="logo.png"
+                      alt="User Avatar"
+                      class="avatar-image"
+                    />
+                  </div>
+                  <p>Welcome to E-Justice support!</p>
+                </div>
+
+                <div class="chat-body" id="chatBody"></div>
+
+                <div class="chat-footer">
+                  <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="Type your message here..."
+                  />
+                  <span id="sendIcon" class="send-icon disabled"
+                    ><i class="fas fa-paper-plane"></i
+                  ></span>
+                  <div class="footer-icons">
+                    <span><i class="fa-solid fa-paperclip"></i></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -380,7 +402,7 @@
 
         <!-- Modal Form -->
         <h2>Book a Consultation</h2>
-        <form id="bookingForm" class="form-container">
+        <form id="bookingForm" class="form-container" netlify>
           <label for="name">Name</label>
           <input
             type="text"
@@ -463,7 +485,7 @@
       <div class="modal-case-content">
         <span class="close-case" onclick="closeCaseModal()">&times;</span>
         <h2>Submit a New Case</h2>
-        <form id="case-form">
+        <form id="case-form" netlify>
           <label for="case-title">Case Title:</label>
           <input type="text" id="case-title" class="case-input" required />
 
@@ -538,6 +560,304 @@
           closeCaseModal();
         }
       };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const chatBody = document.getElementById("chatBody");
+        const chatInput = document.getElementById("chatInput");
+        const sendIcon = document.getElementById("sendIcon");
+        let isTyping = false;
+        let userName = ""; // Variable to store user's name
+
+        // E-Justice Ghana Legal Knowledge Base
+        const legalKnowledge = {
+          greeting: (name) => `Hello${
+            name ? " " + name : ""
+          }! 👋 Welcome to E-Justice Ghana Legal Support. 
+
+I'm here to help you navigate Ghana's legal system. You can ask me about:
+• Court procedures
+• Filing lawsuits
+• Small claims
+• Divorce
+• Land disputes
+• Human rights
+• Our services
+
+How may I assist you today?`,
+
+          "court procedures": (name) => `${
+            name ? name + ", " : ""
+          }in Ghana's judicial system:
+1. Cases begin at the appropriate court level
+2. Plaintiff files writ of summons
+3. Defendant responds within 14 days
+4. Case management conference
+5. Trial with witness examination
+6. Judgment and possible appeals
+
+Would you like me to explain any part in more detail?`,
+
+          "filing a lawsuit": (name) => `${
+            name ? name + ", " : ""
+          }to file a lawsuit through E-Justice Ghana:
+1. Visit our portal at www.ejusticeghana.gov.gh
+2. Complete our online case assessment
+3. Upload supporting documents
+4. Pay filing fees
+5. We prepare and file all documents
+6. You'll receive case status updates
+
+Would you like the link to our filing portal?`,
+
+          "small claims": (name) => `${
+            name ? name + ", " : ""
+          }for small claims under GHS 50,000:
+• Handled by District Courts
+• Simplified procedures available
+• E-Justice Ghana offers:
+  - Online filing
+  - Document preparation
+  - Court fee calculator
+  - Case tracking
+
+I can guide you through the process step-by-step if you'd like.`,
+
+          "divorce process": (name) => `${
+            name ? name + ", " : ""
+          }for divorce in Ghana:
+1. Assessment of marriage breakdown
+2. Counseling referral (if needed)
+3. Petition drafting and filing
+4. Service of process
+5. Final decree processing
+
+This follows the Matrimonial Causes Act, 1971. Would you like more details about any step?`,
+
+          "land disputes": (name) => `${
+            name ? name + ", " : ""
+          }for land disputes:
+• Title verification services
+• Dispute resolution documents
+• Electronic filing for Land Court
+• Surveyor/lawyer referrals
+• Case tracking
+
+All services comply with the Land Act, 2020. How can I assist you specifically with land matters?`,
+
+          "human rights": (name) => `${
+            name ? name + ", " : ""
+          }for human rights issues:
+1. Online violation reporting
+2. CHRAJ complaint preparation
+3. High Court filings
+4. Legal aid referrals
+5. Case monitoring
+
+Protected under Ghana's 1992 Constitution. Would you like help with a specific rights issue?`,
+
+          contact: (name) => `${
+            name ? name + ", " : ""
+          }you can contact E-Justice Ghana at:
+• Website: www.ejusticeghana.gov.gh
+• Hotline: 0300 123 4567
+• WhatsApp: 0244 123 4567
+• Email: info@ejusticeghana.gov.gh
+• Offices: Accra, Kumasi, Tamale, Takoradi
+
+Our team is ready to assist you personally.`,
+
+          services: (name) => `${name ? name + ", " : ""}E-Justice Ghana offers:
+1. Electronic case filing
+2. Document preparation
+3. Legal process guidance
+4. Court fee payments
+5. Case tracking
+6. Lawyer referral
+7. Legal education
+
+All available via our web portal and mobile app. Which service are you interested in?`,
+
+          thanks: (name) =>
+            `You're very welcome${
+              name ? " " + name : ""
+            }! 😊 It's my pleasure to help. Remember, E-Justice Ghana is here whenever you need legal assistance. Have a great day!`,
+
+          default: (name) => `${
+            name ? name + ", " : ""
+          }I'm here to help with Ghana's legal processes. Could you please tell me more about what you need help with? For example:
+- "How do I file a small claim?"
+- "What's the process for divorce?"
+- "I need help with a land dispute"`,
+
+          nameResponse: (name) =>
+            `Nice to meet you, ${name}! 😊 How can I assist you with your legal questions today?`,
+        };
+
+        // Function to extract name from messages
+        function extractName(message) {
+          const namePatterns = [
+            /my name is (\w+)/i,
+            /i am (\w+)/i,
+            /call me (\w+)/i,
+            /this is (\w+)/i,
+            /^(\w+)$/i,
+          ];
+
+          for (const pattern of namePatterns) {
+            const match = message.match(pattern);
+            if (match && match[1]) {
+              return (
+                match[1].charAt(0).toUpperCase() +
+                match[1].slice(1).toLowerCase()
+              );
+            }
+          }
+          return null;
+        }
+
+        // Enhanced response function with personalization
+        function getLegalResponse(userMessage) {
+          const lowerMessage = userMessage.toLowerCase();
+
+          // Check for name in message
+          const extractedName = extractName(userMessage);
+          if (extractedName && !userName) {
+            userName = extractedName;
+            return legalKnowledge["nameResponse"](userName);
+          }
+
+          // Check for greetings
+          if (
+            lowerMessage.includes("hello") ||
+            lowerMessage.includes("hi") ||
+            lowerMessage.includes("hey")
+          ) {
+            return legalKnowledge["greeting"](userName);
+          }
+
+          // Check for thanks
+          if (lowerMessage.includes("thank")) {
+            return legalKnowledge["thanks"](userName);
+          }
+
+          // Legal topics
+          if (
+            lowerMessage.includes("court procedure") ||
+            lowerMessage.includes("court process")
+          ) {
+            return legalKnowledge["court procedures"](userName);
+          } else if (
+            lowerMessage.includes("file") &&
+            (lowerMessage.includes("case") || lowerMessage.includes("lawsuit"))
+          ) {
+            return legalKnowledge["filing a lawsuit"](userName);
+          } else if (
+            lowerMessage.includes("small claim") ||
+            lowerMessage.includes("money claim")
+          ) {
+            return legalKnowledge["small claims"](userName);
+          } else if (
+            lowerMessage.includes("divorce") ||
+            lowerMessage.includes("marriage end")
+          ) {
+            return legalKnowledge["divorce process"](userName);
+          } else if (
+            lowerMessage.includes("land") ||
+            lowerMessage.includes("property")
+          ) {
+            return legalKnowledge["land disputes"](userName);
+          } else if (
+            lowerMessage.includes("human right") ||
+            lowerMessage.includes("right violation")
+          ) {
+            return legalKnowledge["human rights"](userName);
+          } else if (
+            lowerMessage.includes("contact") ||
+            lowerMessage.includes("office") ||
+            lowerMessage.includes("help")
+          ) {
+            return legalKnowledge["contact"](userName);
+          } else if (
+            lowerMessage.includes("service") ||
+            lowerMessage.includes("offer") ||
+            lowerMessage.includes("provide")
+          ) {
+            return legalKnowledge["services"](userName);
+          } else {
+            return legalKnowledge["default"](userName);
+          }
+        }
+
+        // UI Functions (unchanged but included for completeness)
+        function appendMessage(text, sender) {
+          const messageDiv = document.createElement("div");
+          messageDiv.className = `chat-message ${sender}`;
+          messageDiv.innerHTML = `<p>${text.replace(/\n/g, "<br>")}</p>`;
+          chatBody.appendChild(messageDiv);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+          if (isTyping) return;
+          isTyping = true;
+          const typingDiv = document.createElement("div");
+          typingDiv.className = "chat-typing";
+          typingDiv.innerHTML = `
+            <div class="typing-indicator">
+                <span></span><span></span><span></span>
+            </div>
+        `;
+          chatBody.appendChild(typingDiv);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+          const typingDiv = document.querySelector(".chat-typing");
+          if (typingDiv) typingDiv.remove();
+          isTyping = false;
+        }
+
+        function botReply(userMessage) {
+          showTypingIndicator();
+          setTimeout(() => {
+            removeTypingIndicator();
+            const botResponse = getLegalResponse(userMessage);
+            appendMessage(botResponse, "bot");
+          }, 1000);
+        }
+
+        // Event Listeners
+        sendIcon.addEventListener("click", () => {
+          const message = chatInput.value.trim();
+          if (message === "") return;
+
+          appendMessage(message, "user");
+          chatInput.value = "";
+          sendIcon.classList.add("disabled");
+          botReply(message);
+        });
+
+        chatInput.addEventListener("input", () => {
+          if (chatInput.value.trim() !== "") {
+            sendIcon.classList.remove("disabled");
+            sendIcon.classList.add("active");
+          } else {
+            sendIcon.classList.add("disabled");
+            sendIcon.classList.remove("active");
+          }
+        });
+
+        chatInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" && chatInput.value.trim() !== "") {
+            sendIcon.click();
+          }
+        });
+
+        // Initial friendly greeting
+        setTimeout(() => {
+          appendMessage(legalKnowledge["greeting"](userName), "bot");
+        }, 500);
+      });
     </script>
   </body>
 </html>

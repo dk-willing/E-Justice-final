@@ -19,7 +19,7 @@ router.post('/create-payment-page', async (req, res) => {
         description: 'Donate to support our cause',
         amount: null, // Set to null to allow users to enter their own amount
         currency: 'GHS',
-        redirect_url: 'http://localhost:5000/api/payments/verify', // Callback URL after payment
+        redirect_url: '/api/payments/verify', // Callback URL after payment
         metadata: metadata || {},
       },
       {
@@ -121,11 +121,9 @@ router.get('/verify', async (req, res) => {
       'Error verifying payment:',
       error.response?.data || error.message
     );
-    res.status(500).json({
-      message: 'Error verifying payment',
-      error: error.message,
-      details: error.response ? error.response.data : null,
-    });
+    res
+      .status(200)
+      .send('<h1>THANK YOU!</h1><p>Navigate back to continue<<---</p>');
   }
 });
 

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cases - E-Justice Ghana</title>
+    <link rel="stylesheet" href="../css/mycase.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">
+          <img src="../images/e-justice logo.jpg" alt="E-Justice Ghana logo" />
+          <span>E-Justice <span class="highlight">Ghana</span></span>
+        </div>
+
+        <div class="user-profile">
+          <div class="profile-img">
+            <img src="../images/gard.jpeg" alt="User Profile" />
+          </div>
+          <div>
+            <h3>Obed Ayer</h3>
+            <p class="user-type">Citizen</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="../html/citizen-dashboard.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="#" class="nav-item active">
+            <i class="fas fa-folder"></i>
+            <span>My Cases</span>
+          </a>
+          <a href="#" class="nav-item" id="openSearch">
+            <i class="fas fa-search"></i>
+            <span>Search Lawyers</span>
+          </a>
+          <a href="../html/legal re.html" class="nav-item">
+            <i class="fas fa-book"></i>
+            <span>Legal Resources</span>
+          </a>
+          <a href="#" class="nav-item" onclick="openModal()">
+            <i class="fas fa-question-circle"></i>
+            <span>Support & FAQs</span>
+          </a>
+        </nav>
+
+        <!-- Special Nav Icons -->
+        <div class="nav-item-special">
+          <div
+            class="nav-icon dark-mode-toggle"
+            style="cursor: pointer"
+            onclick="document.body.classList.toggle('dark-mode'); 
+                              const icon = document.querySelector('#darkModeIcon'); 
+                              if(document.body.classList.contains('dark-mode')) { 
+                                  icon.className = 'fas fa-sun'; 
+                                  localStorage.setItem('darkMode', 'enabled'); 
+                              } else { 
+                                  icon.className = 'fas fa-moon'; 
+                                  localStorage.setItem('darkMode', 'disabled'); 
+                              }"
+          >
+            <i class="fas fa-moon" id="darkModeIcon"></i>
+          </div>
+          <div class="nav-icon">
+            <i class="fas fa-gear"></i>
+          </div>
+          <div class="nav-icon" id="logout-btn">
+            <i class="fas fa-arrow-right-from-bracket"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+          <div class="header-title">
+            <h1>My Cases</h1>
+          </div>
+          <div class="user-profile-small">
+            <img src="../images/e-justice logo.jpg" alt="User profile" />
+          </div>
+        </div>
+
+        <!-- Page intro -->
+        <div class="intro-section">
+          <h2>Manage Your Legal Cases</h2>
+          <p>
+            View and manage all your ongoing and past legal cases in one place.
+          </p>
+        </div>
+
+        <!-- Cases Section -->
+        <div class="case-section">
+          <h3 class="section-title">Active Cases</h3>
+          <div class="case-grid" id="active-cases">
+            <!-- Cases will be populated here by JavaScript -->
+          </div>
+
+          <h3 class="section-title">Closed Cases</h3>
+          <div class="case-grid" id="closed-cases">
+            <!-- Cases will be populated here by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="search-modal">
+      <div class="search-box">
+        <span class="close-search" id="closeSearch">&times;</span>
+        <h2>Search</h2>
+        <div class="input-box">
+          <input type="text" class="search-input" placeholder="Type here..." />
+          <button class="search-action-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="faq-modal" class="faq-modal">
+      <div class="faq-modal-content">
+        <span class="faq-close" onclick="closeModal()">&times;</span>
+        <h2>FAQ & Support</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              How can I check my case status?
+            </button>
+            <div class="accordion-content">
+              <p>You can check your case status in the Active Cases section.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">How do I contact my lawyer?</button>
+            <div class="accordion-content">
+              <p>Click on the chat icon next to your assigned lawyer.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">Need further assistance?</button>
+            <div class="accordion-content">
+              <p>Contact our support team at support@example.com.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../javaScript/mycase.js"></script>
+
+    <script>
+      function openModal() {
+        document.getElementById("faq-modal").style.display = "flex";
+      }
+      function closeModal() {
+        document.getElementById("faq-modal").style.display = "none";
+      }
+      window.onclick = function (event) {
+        if (event.target === document.getElementById("faq-modal")) {
+          closeModal();
+        }
+      };
+
+      document.querySelectorAll(".accordion-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+
+      let caseUnderReview = false;
+
+      function openCaseModal() {
+        if (caseUnderReview) {
+          alert(
+            "You cannot submit a new case until your previous case is reviewed."
+          );
+          return;
+        }
+        document.getElementById("case-modal").style.display = "flex";
+      }
+
+      function closeCaseModal() {
+        document.getElementById("case-modal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

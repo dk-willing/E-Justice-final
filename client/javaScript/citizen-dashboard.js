@@ -1,5 +1,5 @@
 // Base URL for the backend API
-const API_BASE_URL = "/api";
+const API_BASE_URL = "https://e-justice-02-2.onrender.com/api";
 
 // Modals
 document.addEventListener("DOMContentLoaded", function () {

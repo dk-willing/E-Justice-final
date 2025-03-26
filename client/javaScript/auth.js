@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+const BASE_URL = 'https://e-justice-02-2.onrender.com/api';
 const AUTH_URL = `${BASE_URL}/auth`;
 
 function switchTab(tab) {
